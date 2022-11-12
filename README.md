@@ -1,2 +1,4 @@
-# PH_units
- Tools for working with common Passive House unit types
+# PH_units:
+A simple package for converting common Passive House unit types (IP | SI).
+
+# Usage:
