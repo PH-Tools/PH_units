@@ -3,6 +3,7 @@
 
 import pytest
 from ph_units.converter import convert
+from ph_units.parser import parse_input
 
 
 def test_meter():
@@ -37,9 +38,41 @@ def test_inch():
     assert convert(1, "IN", "IN") == 1
 
 
+def test_positive_inches_parsed_input():
+    assert convert(*parse_input("3 IN"), "IN") == 3
+    assert convert(*parse_input("3 IN"), "FT") == 0.25
+    assert convert(*parse_input("4 IN"), "M") == 0.1016
+    assert convert(*parse_input("4 IN"), "CM") == 10.16
+    assert convert(*parse_input("4 IN"), "MM") == 101.6
+
+
+def test_negative_inches_parsed_input():
+    assert convert(*parse_input("-3 IN"), "IN") == -3
+    assert convert(*parse_input("-3 IN"), "FT") == -0.25
+    assert convert(*parse_input("-4 IN"), "M") == -0.1016
+    assert convert(*parse_input("-4 IN"), "CM") == -10.16
+    assert convert(*parse_input("-4 IN"), "MM") == -101.6
+
+
 def test_foot():
     assert convert(1, "FT", "M") == 0.3048
     assert convert(1, "FT", "CM") == 30.48
     assert convert(1, "FT", "MM") == 304.8
     assert convert(1, "FT", "FT") == 1
     assert convert(1, "FT", "IN") == 12
+
+
+def test_positive_feet_parsed_input():
+    assert convert(*parse_input("3 FT"), "FT") == 3
+    assert convert(*parse_input("3 FT"), "IN") == 36
+    assert convert(*parse_input("4 FT"), "M") == 1.2192
+    assert convert(*parse_input("4 FT"), "CM") == 121.92
+    assert convert(*parse_input("4 FT"), "MM") == 1219.2
+
+
+def test_negative_feet_parsed_input():
+    assert convert(*parse_input("-3 FT"), "FT") == -3
+    assert convert(*parse_input("-3 FT"), "IN") == -36
+    assert convert(*parse_input("-4 FT"), "M") == -1.2192
+    assert convert(*parse_input("-4 FT"), "CM") == -121.92
+    assert convert(*parse_input("-4 FT"), "MM") == -1219.2
