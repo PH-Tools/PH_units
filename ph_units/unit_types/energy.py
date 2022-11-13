@@ -56,7 +56,7 @@ class KBtuPerFootSquared(Base_UnitType):
     """KBTU/FT2"""
 
     __symbol__ = "KBTU/FT2"
-    __aliases__ = []
+    __aliases__ = ["KBTU/SF"]
     __factors__ = {
         "SI": "{}*3.15459",
         "WH/M2": "{}*3154.59",
@@ -72,7 +72,7 @@ class BtuPerFootSquared(Base_UnitType):
     """BTU/FT2"""
 
     __symbol__ = "BTU/FT2"
-    __aliases__ = []
+    __aliases__ = ["BTU/SF"]
     __factors__ = {
         "SI": "{}*0.00315459",
         "WH/M2": "{}*3.15459",

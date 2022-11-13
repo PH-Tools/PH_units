@@ -21,7 +21,7 @@ class MeterPerSecond(Base_UnitType):
     """Meter/Second"""
 
     __symbol__ = "M/S"
-    __aliases__ = []
+    __aliases__ = ["METER/SEC", "METER/SECOND", "M/SECOND"]
     __factors__ = {
         "SI": "{}*1",
         "M/S": "{}*1",

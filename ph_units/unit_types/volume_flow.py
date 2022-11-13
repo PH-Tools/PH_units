@@ -8,7 +8,7 @@ class MeterCubedPerHour(Base_UnitType):
     """M3/HR"""
 
     __symbol__ = "M3/HR"
-    __aliases__ = ["FT3/H", "FT3H"]
+    __aliases__ = ["CM/H", "CMH"]
     __factors__ = {"SI": "{}*1", "M3/HR": "{}*1", "CFM": "{}*0.588577779"}
 
 

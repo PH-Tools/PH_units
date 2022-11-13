@@ -75,7 +75,7 @@ class BtuPerHourFootSquared(Base_UnitType):
     """BTU/HR-FT2"""
 
     __symbol__ = "BTU/HR-FT2"
-    __aliases__ = []
+    __aliases__ = ["BTUH/FT2", "BTU/H-SF", "BTU/H-FT2"]
     __factors__ = {
         "SI": "{}*3.154591186",
         "W/M2": "{}*3.154591186",
