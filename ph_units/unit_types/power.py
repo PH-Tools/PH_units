@@ -12,6 +12,7 @@ class Kilowatts(Base_UnitType):
     __factors__ = {
         "SI": "{}*1",
         "KW": "{}*1",
+        "W": "{}*1000",
         "BTU/HR": "{}*3412.141156",
         "KBTU/HR": "{}*3.412141156",
     }
@@ -88,4 +89,22 @@ class BtuPerHour(Base_UnitType):
 
     __symbol__ = "BTUH"
     __aliases__ = ["BTU/HR", "BTU/H", "BTUHR"]
-    __factors__ = {"SI": "{}*0.586142222", "W": "{}*0.586142222"}
+    __factors__ = {
+        "SI": "{}*0.293071111",
+        "KBTUH": "{}/1000",
+        "W": "{}*0.293071111",
+        "KW": "{}*0.000293071",
+    }
+
+
+class KiloBtuPerHour(Base_UnitType):
+    """KBTU/H"""
+
+    __symbol__ = "KBTUH"
+    __aliases__ = ["KBTU/HR", "KBTU/H", "KBTUHR"]
+    __factors__ = {
+        "SI": "{}*0.293071111",
+        "BTUH": "{}*1000",
+        "W": "{}*293.0711111",
+        "KW": "{}*0.293071111",
+    }
