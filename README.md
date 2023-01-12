@@ -16,7 +16,9 @@ The package also has a parser which can take simple text in the format: `"{value
 >>> val, unit = parse_input("0.17 BTU/HR-FT2-F")
 >>> val  # 0.17
 >>> unit # 'BTU/HR-FT2-F'
->>> 
+```
+The results of the parser can then be fed into the converter
+```
 >>> from ph_units.converter import convert
 >>> convert(val, "W/MK", unit) -> 0.098 # BTU/HR-FT2-F
 ```
