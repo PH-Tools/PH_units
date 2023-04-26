@@ -8,14 +8,19 @@ from ph_units.parser import parse_input
 
 def test_meter():
     assert convert(1, "M", "M") == 1
+    assert convert(1, "METER", "M") == 1
+    assert convert(1, "METERS", "M") == 1
     assert convert(1, "M", "CM") == 100
     assert convert(1, "M", "MM") == 1000
     assert convert(1, "M", "FT") == pytest.approx(3.280839895)
     assert convert(1, "M", "IN") == pytest.approx(39.37007874)
+    assert convert(1, "M", "INCHES") == pytest.approx(39.37007874)
 
 
 def test_centimeter():
     assert convert(1, "CM", "M") == 0.01
+    assert convert(1, "CENTIMETER", "M") == 0.01
+    assert convert(1, "CENTIMETERS", "M") == 0.01
     assert convert(1, "CM", "CM") == 1
     assert convert(1, "CM", "MM") == 10
     assert convert(1, "CM", "FT") == pytest.approx(0.0328)
@@ -24,6 +29,8 @@ def test_centimeter():
 
 def test_millimeter():
     assert convert(1, "MM", "M") == 0.001
+    assert convert(1, "MILLIMETER", "M") == 0.001
+    assert convert(1, "MILLIMETERS", "M") == 0.001
     assert convert(1, "MM", "CM") == 0.1
     assert convert(1, "MM", "MM") == 1
     assert convert(1, "MM", "FT") == pytest.approx(0.003280842)
@@ -32,6 +39,8 @@ def test_millimeter():
 
 def test_inch():
     assert convert(1, "IN", "M") == 0.0254
+    assert convert(1, "INCH", "M") == 0.0254
+    assert convert(1, "INCHES", "M") == 0.0254
     assert convert(1, "IN", "CM") == 2.54
     assert convert(1, "IN", "MM") == 25.4
     assert convert(1, "IN", "FT") == (1 / 12)
@@ -56,6 +65,8 @@ def test_negative_inches_parsed_input():
 
 def test_foot():
     assert convert(1, "FT", "M") == 0.3048
+    assert convert(1, "FOOT", "M") == 0.3048
+    assert convert(1, "FEET", "M") == 0.3048
     assert convert(1, "FT", "CM") == 30.48
     assert convert(1, "FT", "MM") == 304.8
     assert convert(1, "FT", "FT") == 1

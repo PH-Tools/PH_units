@@ -34,7 +34,7 @@ UNIT_TYPE_MODULES = (
 )
 
 
-def _is_unit_type(cls):
+def _is_unit_class(cls):
     # type: (type) -> bool
     """Return True if the type is a Unit."""
     return hasattr(cls, "__symbol__") and hasattr(cls, "__factors__")
@@ -52,15 +52,15 @@ def _build_alias_dict(_module):
     --------
         * (Dict[str, str]): A dict of all the unit-type aliases.
     """
-    _ = {}
-    for cls in _module.__dict__.values():
-        if not _is_unit_type(cls):
+    d = {}
+    for unit_class in _module.__dict__.values():
+        if not _is_unit_class(unit_class):
             continue
 
-        _[cls.__symbol__] = cls.__symbol__
-        for alias in cls.__aliases__:
-            _[alias] = cls.__symbol__
-    return _
+        d[unit_class.__symbol__] = unit_class.__symbol__
+        for alias in unit_class.__aliases__:
+            d[alias] = unit_class.__symbol__
+    return d
 
 
 def build_unit_type_dicts():
@@ -82,14 +82,20 @@ def build_unit_type_dicts():
     unit_type_dict = {}  # type: Dict[str, Base_UnitType]
     unit_type_alias_dict = {}  # type: Dict[str, str]
 
-    for _mod in UNIT_TYPE_MODULES:
-        unit_type_dict.update(
-            {
-                cls.__symbol__: cls
-                for cls in _mod.__dict__.values()
-                if _is_unit_type(cls)
-            }
-        )
-        unit_type_alias_dict.update(_build_alias_dict(_mod))
+    for unit_module in UNIT_TYPE_MODULES:
+        d = {}
+        for unit_class in unit_module.__dict__.values():
+            if not _is_unit_class(unit_class):
+                continue
+
+            # -- Add the base unit-type class to the dict.
+            d[unit_class.__symbol__] = unit_class
+
+            # -- Add the type's aliases to the dict as well.
+            for alias in unit_class.__aliases__:
+                d[alias] = unit_class
+
+        unit_type_dict.update(d)
+        unit_type_alias_dict.update(_build_alias_dict(unit_module))
 
     return (unit_type_dict, unit_type_alias_dict)

@@ -10,7 +10,6 @@ class MeterCubedPerSecond(Base_UnitType):
     __symbol__ = "M3/S"
     __aliases__ = ["M3/SECOND", "M3/SEC", "CM/S"]
     __factors__ = {
-        "SI": "{}*1",
         "M3/S": "{}*1",
         "M3/M": "{}*60",
         "M3/HR": "{}*60*60",
@@ -25,7 +24,6 @@ class MeterCubedPerMinute(Base_UnitType):
     __symbol__ = "M3/M"
     __aliases__ = ["M3/MIN", "M3/MINUTE", "CM/M"]
     __factors__ = {
-        "SI": "{}*1",
         "M3/S": "{}/60",
         "M3/M": "{}*1",
         "M3/HR": "{}*60",
@@ -40,7 +38,6 @@ class MeterCubedPerHour(Base_UnitType):
     __symbol__ = "M3/HR"
     __aliases__ = ["CM/H", "CMH", "M3/H"]
     __factors__ = {
-        "SI": "{}*1",
         "M3/S": "({}/60)/60",
         "M3/M": "{}/60",
         "M3/HR": "{}*1",
@@ -58,7 +55,6 @@ class FootCubedPerMinute(Base_UnitType):
     __symbol__ = "CFM"
     __aliases__ = ["FT3/M", "FT3M"]
     __factors__ = {
-        "SI": "(({}*1.699010796)/60)/60",
         "M3/S": "(({}*1.699010796)/60)/60",
         "M3/M": "({}*1.699010796)/60",
         "M3/HR": "{}*1.699010796",
@@ -73,7 +69,6 @@ class FootCubedPerHour(Base_UnitType):
     __symbol__ = "CFH"
     __aliases__ = ["FT3/H", "FT3/HR", "FT3H", "CF/HR"]
     __factors__ = {
-        "SI": "(({}/60)*1.699010796)/60/60",
         "M3/S": "(({}/60)*1.699010796)/60/60",
         "M3/M": "(({}/60)*1.699010796)/60",
         "M3/HR": "(({}/60)*1.699010796)",

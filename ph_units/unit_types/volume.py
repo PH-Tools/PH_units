@@ -10,7 +10,6 @@ class MeterCubed(Base_UnitType):
     __symbol__ = "M3"
     __aliases__ = []
     __factors__ = {
-        "SI": "{}*1",
         "M3": "{}*1",
         "FT3": "{}*35.31466672",
         "L": "{}*1000",
@@ -24,7 +23,6 @@ class Liter(Base_UnitType):
     __symbol__ = "L"
     __aliases__ = ["LITER", "LITRE"]
     __factors__ = {
-        "SI": "{}*1",
         "L": "{}*1",
         "GA": "{}*0.264172",
         "FT3": "{}*0.035314667",
@@ -37,7 +35,7 @@ class Gallon(Base_UnitType):
 
     __symbol__ = "GA"
     __aliases__ = ["GALLON", "G"]
-    __factors__ = {"SI": "{}*3.785411784", "L": "{}*3.785411784"}
+    __factors__ = {"L": "{}*3.785411784"}
 
 
 class FootCubed(Base_UnitType):
@@ -46,7 +44,6 @@ class FootCubed(Base_UnitType):
     __symbol__ = "FT3"
     __aliases__ = ["CF"]
     __factors__ = {
-        "SI": "{}*0.028316847",
         "M3": "{}*0.028316847",
         "FT3": "{}*1",
     }

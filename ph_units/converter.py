@@ -16,7 +16,7 @@ from ph_units.unit_types import build_unit_type_dicts
 unit_type_dict, unit_type_alias_dict = build_unit_type_dicts()
 
 
-def _standardize_input_unit(_input, _unit_type_alias_dict):
+def _standardize_unit_name(_input, _unit_type_alias_dict):
     # type: (str, Dict[str, str]) -> str
     """Standardize unit nomenclature. ie: 'FT3/M' and 'CFM' both return 'CFM'.
     Arguments:
@@ -62,8 +62,9 @@ def _clean_user_inputs(_input_unit, _target_unit, _unit_type_alias_dict):
         _input_unit = copy(_target_unit)
 
     input_unit = str(_input_unit).upper().strip().replace(" ", "")
-    input_unit = _standardize_input_unit(input_unit, _unit_type_alias_dict)
+    input_unit = _standardize_unit_name(input_unit, _unit_type_alias_dict)
     target_unit = str(_target_unit).upper().strip().replace(" ", "")
+    target_unit = _standardize_unit_name(target_unit, _unit_type_alias_dict)
 
     return input_unit, target_unit
 

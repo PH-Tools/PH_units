@@ -9,7 +9,7 @@ class WattHoursPerMeterCubed(Base_UnitType):
 
     __symbol__ = "WH/M3"
     __aliases__ = []
-    __factors__ = {"SI": "{}*1", "WH/M3": "{}*1", "W/CFM": "{}*1.699010796"}
+    __factors__ = {"WH/M3": "{}*1", "W/CFM": "{}*1.699010796"}
 
 
 class WattHoursPerKilometerSquared(Base_UnitType):
@@ -17,7 +17,7 @@ class WattHoursPerKilometerSquared(Base_UnitType):
 
     __symbol__ = "WH/KM2"
     __aliases__ = []
-    __factors__ = {"SI": "{}*1", "WH/KM2": "{}*1", "BTU/FT2": "{}*0.000000317"}
+    __factors__ = {"WH/KM2": "{}*1", "BTU/FT2": "{}*0.000000317"}
 
 
 class WattHoursPerMeterSquared(Base_UnitType):
@@ -26,7 +26,6 @@ class WattHoursPerMeterSquared(Base_UnitType):
     __symbol__ = "WH/M2"
     __aliases__ = []
     __factors__ = {
-        "SI": "{}*1",
         "WH/M2": "{}*1",
         "WH/FT2": "{}*0.092903",
         "KWH/M2": "{}*0.001",
@@ -36,13 +35,42 @@ class WattHoursPerMeterSquared(Base_UnitType):
     }
 
 
+class WattHoursPerFootSquared(Base_UnitType):
+    """WH/FT2"""
+
+    __symbol__ = "WH/FT2"
+    __aliases__ = []
+    __factors__ = {
+        "WH/M2": "{}*10.7639",
+        "WH/FT2": "{}*1",
+        "KWH/M2": "{}*0.0107639",
+        "KWH/FT2": "{}*0.001",
+        "BTU/FT2": "{}*3.413",
+        "KBTU/FT2": "{}*0.003413",
+    }
+
+
+class KiloWattHoursPerFootSquared(Base_UnitType):
+    """KWH/FT2"""
+
+    __symbol__ = "KWH/FT2"
+    __aliases__ = ["KWH/SF"]
+    __factors__ = {
+        "WH/M2": "{}*10763.9",
+        "WH/FT2": "{}*1000",
+        "KWH/M2": "{}*10.7639",
+        "KWH/FT2": "{}*1",
+        "BTU/FT2": "{}*3413",
+        "KBTU/FT2": "{}*3.413",
+    }
+
+
 class KilowattHoursPerMeterSquared(Base_UnitType):
     """KWH/M2"""
 
     __symbol__ = "KWH/M2"
     __aliases__ = []
     __factors__ = {
-        "SI": "{}*1",
         "WH/M2": "{}*1000",
         "WH/FT2": "{}*92.903",
         "KWH/M2": "{}*1",
@@ -58,7 +86,6 @@ class KBtuPerFootSquared(Base_UnitType):
     __symbol__ = "KBTU/FT2"
     __aliases__ = ["KBTU/SF"]
     __factors__ = {
-        "SI": "{}*3.15459",
         "WH/M2": "{}*3154.59",
         "WH/FT2": "{}*293.071",
         "KWH/M2": "{}*3.15459",
@@ -74,7 +101,6 @@ class BtuPerFootSquared(Base_UnitType):
     __symbol__ = "BTU/FT2"
     __aliases__ = ["BTU/SF"]
     __factors__ = {
-        "SI": "{}*0.00315459",
         "WH/M2": "{}*3.15459",
         "WH/FT2": "{}*0.293071",
         "KWH/M2": "{}*0.00315459",
@@ -89,4 +115,4 @@ class MegaJoulePerMeterCubedKelvin(Base_UnitType):
 
     __symbol__ = "MJ/M3K"
     __aliases__ = []
-    __factors__ = {"SI": "{}*1", "MJ/M3K": "{}*1", "BTU/FT3-F": "{}*14.91066014"}
+    __factors__ = {"MJ/M3K": "{}*1", "BTU/FT3-F": "{}*14.91066014"}

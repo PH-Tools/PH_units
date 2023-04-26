@@ -9,7 +9,7 @@ class MeterSquare(Base_UnitType):
 
     __symbol__ = "M2"
     __aliases__ = ["SM"]
-    __factors__ = {"SI": "{}*1", "M2": "{}*1", "FT2": "{}*10.76391042"}
+    __factors__ = {"M2": "{}*1", "FT2": "{}*10.76391042"}
 
 
 class FootSquare(Base_UnitType):
@@ -17,4 +17,4 @@ class FootSquare(Base_UnitType):
 
     __symbol__ = "FT2"
     __aliases__ = ["SFT", "SF"]
-    __factors__ = {"SI": "{}*0.09290304", "M2": "{}*0.09290304", "FT2": "{}*1"}
+    __factors__ = {"M2": "{}*0.09290304", "FT2": "{}*1"}
