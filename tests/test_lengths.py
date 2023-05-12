@@ -8,6 +8,8 @@ from ph_units.parser import parse_input
 
 def test_meter():
     assert convert(1, "M", "M") == 1
+    assert convert(1, "M", "METER") == 1
+    assert convert(1, "M", "METERS") == 1
     assert convert(1, "METER", "M") == 1
     assert convert(1, "METERS", "M") == 1
     assert convert(1, "M", "CM") == 100
