@@ -5,6 +5,13 @@ import pytest
 from ph_units.converter import convert, unit_type_dict
 
 
+def test_W():
+    assert convert(1, "W", "KW") == 0.001
+    assert convert(1, "W", "W") == 1
+    assert convert(1, "W", "BTU/HR") == 3.412141156
+    assert convert(1, "W", "KBTU/HR") == 0.003412141
+
+
 def test_kW():
     assert convert(1, "KW", "KW") == 1
     assert convert(1, "KW", "W") == 1_000
