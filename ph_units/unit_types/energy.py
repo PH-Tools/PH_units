@@ -4,12 +4,97 @@
 from ph_units.unit_types._base import Base_UnitType
 
 
-class WattHoursPerMeterCubed(Base_UnitType):
-    """WH/M3"""
+class WattHour(Base_UnitType):
+    """Wh"""
 
-    __symbol__ = "WH/M3"
+    __symbol__ = "WH"
     __aliases__ = []
-    __factors__ = {"WH/M3": "{}*1", "W/CFM": "{}*1.699010796"}
+    __factors__ = {
+        "WH": "{}*1",
+        "KWH": "{}*0.001",
+        "BTU": "{}*3.41214",
+        "KBTU": "{}*0.00341214",
+        "MJ": "{}*0.0036",
+        "KJ": "{}*3.6",
+    }
+
+
+class KiloWattHour(Base_UnitType):
+    """KWH"""
+
+    __symbol__ = "KWH"
+    __aliases__ = []
+    __factors__ = {
+        "WH": "{}*1000",
+        "KWH": "{}*1",
+        "BTU": "{}*3412.14",
+        "KBTU": "{}*3.41214",
+        "MJ": "{}*3.6",
+        "KJ": "{}*3600",
+    }
+
+
+class BTU(Base_UnitType):
+    """BTU"""
+
+    __symbol__ = "BTU"
+    __aliases__ = []
+    __factors__ = {
+        "WH": "{}*0.293071",
+        "KWH": "{}*0.000293071",
+        "BTU": "{}*1",
+        "KBTU": "{}*0.001",
+        "MJ": "{}*0.00105506",
+        "KJ": "{}*1.05506",
+    }
+
+
+class KiloBTU(Base_UnitType):
+    """KBTU"""
+
+    __symbol__ = "KBTU"
+    __aliases__ = []
+    __factors__ = {
+        "WH": "{}*293.071",
+        "KWH": "{}*0.293071",
+        "BTU": "{}*1000",
+        "KBTU": "{}*1",
+        "MJ": "{}*1.05506",
+        "KJ": "{}*1055.06",
+    }
+
+
+class MegaJoule(Base_UnitType):
+    """MJ"""
+
+    __symbol__ = "MJ"
+    __aliases__ = []
+    __factors__ = {
+        "WH": "{}*277.778",
+        "KWH": "{}*0.277778",
+        "BTU": "{}*947.817",
+        "KBTU": "{}*0.947817",
+        "MJ": "{}*1",
+        "KJ": "{}*1000",
+    }
+
+
+class KiloJoule(Base_UnitType):
+    """KJ"""
+
+    __symbol__ = "KJ"
+    __aliases__ = []
+    __factors__ = {
+        "WH": "{}*0.277778",
+        "KWH": "{}*0.000277778",
+        "BTU": "{}*0.947817",
+        "KBTU": "{}*0.000947817",
+        "MJ": "{}*0.001",
+        "KJ": "{}*1",
+    }
+
+
+# ----------------- Energy Per Area -----------------
 
 
 class WattHoursPerKilometerSquared(Base_UnitType):
@@ -108,6 +193,17 @@ class BtuPerFootSquared(Base_UnitType):
         "BTU/FT2": "{}*1",
         "KBTU/FT2": "{}*0.001",
     }
+
+
+# ----------------- Energy Per Volume -----------------
+
+
+class WattHoursPerMeterCubed(Base_UnitType):
+    """WH/M3"""
+
+    __symbol__ = "WH/M3"
+    __aliases__ = []
+    __factors__ = {"WH/M3": "{}*1", "W/CFM": "{}*1.699010796"}
 
 
 class MegaJoulePerMeterCubedKelvin(Base_UnitType):
