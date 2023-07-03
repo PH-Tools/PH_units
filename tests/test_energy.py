@@ -6,6 +6,7 @@ from ph_units.converter import convert
 
 
 def test_wh_m3():
+    assert convert(1, "WH/M³", "WH/M3") == 1
     assert convert(1, "WH/M3", "WH/M3") == 1
     assert convert(1, "WH/M3", "W/CFM") == pytest.approx(1.699010796)
 
@@ -26,6 +27,7 @@ def test_wh_meter_squared():
 
 def test_kwh_meter_squared():
     assert convert(1, "KWH/M2", "WH/M2") == 1000
+    assert convert(1, "KWH/M²", "WH/M2") == 1000
     assert convert(1, "KWH/M2", "WH/FT2") == 92.903
     assert convert(1, "KWH/M2", "KWH/M2") == 1
     assert convert(1, "KWH/M2", "KWH/FT2") == 0.092903040
@@ -35,6 +37,7 @@ def test_kwh_meter_squared():
 
 def test_kBtu_foot_squared():
     assert convert(1, "KBTU/FT2", "WH/M2") == 3154.59
+    assert convert(1, "KBTU/FT²", "WH/M2") == 3154.59
     assert convert(1, "KBTU/FT2", "WH/FT2") == 293.071
     assert convert(1, "KBTU/FT2", "KWH/M2") == 3.15459
     assert convert(1, "KBTU/FT2", "KWH/FT2") == 0.293071
@@ -43,6 +46,7 @@ def test_kBtu_foot_squared():
 
 
 def test_Btu_foot_squared():
+    assert convert(1, "BTU/FT²", "WH/M2") == 3.15459
     assert convert(1, "BTU/FT2", "WH/M2") == 3.15459
     assert convert(1, "BTU/FT2", "WH/FT2") == 0.293071
     assert convert(1, "BTU/FT2", "KWH/M2") == 0.00315459
@@ -103,3 +107,52 @@ def test_KiloJoule():
     assert convert(1, "KJ", "KBTU") == pytest.approx(0.000947817)
     assert convert(1, "KJ", "MJ") == pytest.approx(0.001)
     assert convert(1, "KJ", "KJ") == 1
+
+
+def test_MegaJoule_per_m3_DegreeKelvin():
+    assert convert(1, "MJ/M3K", "MJ/M3K") == 1
+    assert convert(1, "MJ/M3K", "BTU/FT3F") == pytest.approx(14.91066014)
+
+
+def test_Btu_per_ft3_DegreeFarenheit():
+    assert convert(1, "BTU/FT3F", "BTU/FT3F") == 1
+    assert convert(1, "BTU/FT3F", "MJ/M3K") == pytest.approx(0.067066112)
+
+
+def test_Joule_per_Kilogram_DegreeKelvin():
+    assert convert(1, "J/KGK", "J/KGK") == 1
+    assert convert(1, "J/KGK", "BTU/LBF") == pytest.approx(0.000238846)
+
+
+def test_Btu_per_Pound_degree_Farenheit() -> None:
+    assert convert(1, "BTU/LBF", "BTU/LBF") == 1
+    assert convert(1, "BTU/LBF", "J/KGK") == pytest.approx(4186.8)
+
+
+def test_wattHour_per_m2_per_degree_Kelvin() -> None:
+    assert convert(1, "WH/M2K", "WH/M2K") == 1
+    assert convert(1, "WH/M2K", "WH/M²K") == 1
+    assert convert(1, "WH/M2K", "BTU/FT2F") == pytest.approx(0.1761102)
+    assert convert(1, "WH/M2K", "WH/FT2F") == pytest.approx(0.0516128)
+
+
+def test_wattHour_per_ft2_per_degree_Farenheit():
+    assert convert(1, "WH/FT2F", "WH/FT2F") == 1
+    assert convert(1, "WH/FT2F", "WH/M2K") == pytest.approx(19.37503875)
+    assert convert(1, "WH/FT2F", "BTU/FT2F") == pytest.approx(3.412141156)
+
+
+def test_Btu_per_ft2_per_degree_Farenheit():
+    assert convert(1, "BTU/FT2F", "BTU/FT2F") == 1
+    assert convert(1, "BTU/FT2F", "WH/M2K") == pytest.approx(5.678264134)
+    assert convert(1, "BTU/FT2F", "WH/FT2F") == pytest.approx(0.293071111)
+
+
+def test_kWh_per_kWh():
+    assert convert(1, "KWH/KWH", "KWH/KWH") == 1
+    assert convert(1, "KWH/KWH", "BTU/BTU") == pytest.approx(3412.14)
+
+
+def test_Btu_per_Btu():
+    assert convert(1, "BTU/BTU", "BTU/BTU") == 1
+    assert convert(1, "BTU/BTU", "KWH/KWH") == pytest.approx(0.000293071)

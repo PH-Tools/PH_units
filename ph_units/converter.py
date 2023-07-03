@@ -34,8 +34,8 @@ def _standardize_unit_name(_input, _unit_type_alias_dict):
         input_unit = _unit_type_alias_dict[_input_string]
     except KeyError:
         raise Exception(
-            "\n\tI do not know how to understand the input unit: '{}'?".format(
-                _input_string
+            "\n\tI do not know how to understand the input unit: '{}'?\nValid formats include: {}".format(
+                _input_string, sorted(_unit_type_alias_dict.keys())
             )
         )
 

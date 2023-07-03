@@ -12,6 +12,19 @@ def test_W():
     assert convert(1, "W", "KBTU/HR") == 0.003412141
 
 
+def test_Watts_per_meter_squared():
+    assert convert(1, "W/M2", "W/M2") == 1
+    assert convert(1, "W/M²", "W/M2") == 1
+    assert convert(1, "W/M2", "BTU/HR-FT2") == 0.316998286
+    assert convert(1, "W/M2", "W/FT2") == 0.09290304
+
+
+def test_Watts_per_foot_squared():
+    assert convert(1, "W/FT2", "W/M2") == 10.76391042
+    assert convert(1, "W/FT2", "BTU/HR-FT2") == 3.154591186
+    assert convert(1, "W/FT2", "W/FT2") == 1
+
+
 def test_kW():
     assert convert(1, "KW", "KW") == 1
     assert convert(1, "KW", "W") == 1_000
@@ -20,9 +33,17 @@ def test_kW():
 
 
 def test_Btu_hr():
+    assert convert(1, "Btu/hr", "W") == 0.293071111
+    assert convert(1_000, "Btu/hr", "KBTUH") == 1
     assert convert(1, "BTUH", "W") == 0.293071111
     assert convert(1, "BTUH", "KW") == 0.000293071
     assert convert(650_678, "BTUH", "KW") == 190.694852138
+
+
+def test_Btu_hr_ft2():
+    assert convert(1, "BTU/HR-FT2", "BTU/HR-FT2") == 1
+    assert convert(1, "BTU/HR-FT2", "W/M2") == pytest.approx(3.15459057)
+    assert convert(1, "BTU/HRFT²", "W/M2") == pytest.approx(3.15459057)
 
 
 def test_kBtu_aliases():

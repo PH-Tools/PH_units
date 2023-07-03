@@ -19,6 +19,8 @@ from ph_units.unit_types import speed
 from ph_units.unit_types import temperature
 from ph_units.unit_types import volume_flow
 from ph_units.unit_types import volume
+from ph_units.unit_types import density
+from ph_units.unit_types import emissions_factors
 
 
 UNIT_TYPE_MODULES = (
@@ -31,6 +33,8 @@ UNIT_TYPE_MODULES = (
     temperature,
     volume_flow,
     volume,
+    density,
+    emissions_factors,
 )
 
 

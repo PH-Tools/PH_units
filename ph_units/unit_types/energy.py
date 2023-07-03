@@ -23,7 +23,7 @@ class KiloWattHour(Base_UnitType):
     """KWH"""
 
     __symbol__ = "KWH"
-    __aliases__ = []
+    __aliases__ = ["KWH/YR", "KWH/A", "KWH/M", "KWH/MONTH"]
     __factors__ = {
         "WH": "{}*1000",
         "KWH": "{}*1",
@@ -154,7 +154,7 @@ class KilowattHoursPerMeterSquared(Base_UnitType):
     """KWH/M2"""
 
     __symbol__ = "KWH/M2"
-    __aliases__ = []
+    __aliases__ = ["KWH/M²MONTH", "KWH/M²A", "KWH/M²"]
     __factors__ = {
         "WH/M2": "{}*1000",
         "WH/FT2": "{}*92.903",
@@ -169,7 +169,7 @@ class KBtuPerFootSquared(Base_UnitType):
     """KBTU/FT2"""
 
     __symbol__ = "KBTU/FT2"
-    __aliases__ = ["KBTU/SF"]
+    __aliases__ = ["KBTU/SF", "KBTU/FT²MONTH", "KBTU/FT²YR", "KBTU/FT²A", "KBTU/FT²"]
     __factors__ = {
         "WH/M2": "{}*3154.59",
         "WH/FT2": "{}*293.071",
@@ -184,7 +184,7 @@ class BtuPerFootSquared(Base_UnitType):
     """BTU/FT2"""
 
     __symbol__ = "BTU/FT2"
-    __aliases__ = ["BTU/SF"]
+    __aliases__ = ["BTU/SF", "BTU/FT²"]
     __factors__ = {
         "WH/M2": "{}*3.15459",
         "WH/FT2": "{}*0.293071",
@@ -202,7 +202,7 @@ class WattHoursPerMeterCubed(Base_UnitType):
     """WH/M3"""
 
     __symbol__ = "WH/M3"
-    __aliases__ = []
+    __aliases__ = ["WH/M³"]
     __factors__ = {"WH/M3": "{}*1", "W/CFM": "{}*1.699010796"}
 
 
@@ -211,4 +211,86 @@ class MegaJoulePerMeterCubedKelvin(Base_UnitType):
 
     __symbol__ = "MJ/M3K"
     __aliases__ = []
-    __factors__ = {"MJ/M3K": "{}*1", "BTU/FT3-F": "{}*14.91066014"}
+    __factors__ = {"MJ/M3K": "{}*1", "BTU/FT3F": "{}*14.91066014"}
+
+
+class BtuPerFootCubedDegreeFarenheirt(Base_UnitType):
+    """BTU/FT3F"""
+
+    __symbol__ = "BTU/FT3F"
+    __aliases__ = ["BTU/FT3°F"]
+    __factors__ = {"MJ/M3K": "{}*0.067066112", "BTU/FT3F": "{}*1"}
+
+
+# ----------------- Energy Per Mass -----------------
+
+
+class JoulePerKilogramDegreeKelvin(Base_UnitType):
+    """J/KG-K"""
+
+    __symbol__ = "J/KGK"
+    __aliases__ = ["J/KG-K"]
+    __factors__ = {"J/KGK": "{}*1", "BTU/LBF": "{}*0.000238846"}
+
+
+class BtuPerPoundDegreeFarenheirt(Base_UnitType):
+    """BTU/LB-F"""
+
+    __symbol__ = "BTU/LBF"
+    __aliases__ = ["BTU/LB-F", "BTU/LB°F"]
+    __factors__ = {"J/KGK": "{}*4186.800585", "BTU/LBF": "{}*1"}
+
+
+class WattHoursPerFootSquaredDegreeFarenheirt(Base_UnitType):
+    """WH/FT2F"""
+
+    __symbol__ = "WH/FT2F"
+    __aliases__ = ["WH/FT2-F", "WH/FT2°F", "WH/FT²F"]
+    __factors__ = {
+        "WH/M2K": "{}*19.37503875",
+        "WH/FT2F": "{}*1",
+        "BTU/FT2F": "{}*3.412141156",
+    }
+
+
+class WattHoursPerMeterSqauredPerDegreeKelvin(Base_UnitType):
+    """WH/M2K"""
+
+    __symbol__ = "WH/M2K"
+    __aliases__ = ["WH/M2K", "WH/M²K"]
+    __factors__ = {
+        "WH/M2K": "{}*1",
+        "WH/FT2F": "{}*0.0516128",
+        "BTU/FT2F": "{}*0.1761102",
+    }
+
+
+class BtuPerSquareFootDegreeFarenheirt(Base_UnitType):
+    """BTU/FT2-F"""
+
+    __symbol__ = "BTU/FT2F"
+    __aliases__ = ["BTU/FT2-F", "BTU/FT2°F", "BTU/FT²F"]
+    __factors__ = {
+        "BTU/FT2F": "{}*1",
+        "WH/FT2F": "{}*0.293071111",
+        "WH/M2K": "{}*5.678264134",
+    }
+
+
+# ----------------- Primary Energy Factors -----------------
+
+
+class KiloWattHourPerKiloWattHour(Base_UnitType):
+    """KWH/KWH"""
+
+    __symbol__ = "KWH/KWH"
+    __aliases__ = ["KWH/KWH"]
+    __factors__ = {"KWH/KWH": "{}*1", "BTU/BTU": "{}*3412.14"}
+
+
+class BtuPerBtu(Base_UnitType):
+    """BTU/BTU"""
+
+    __symbol__ = "BTU/BTU"
+    __aliases__ = ["BTU/BTU"]
+    __factors__ = {"KWH/KWH": "{}*0.000293071", "BTU/BTU": "{}*1"}

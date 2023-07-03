@@ -8,7 +8,7 @@ class WattsPerMeterSquaredKelvin(Base_UnitType):
     """W/M2K (U-Value)"""
 
     __symbol__ = "W/M2K"
-    __aliases__ = ["U-SI"]
+    __aliases__ = ["U-SI", "W/M²K"]
     __factors__ = {
         "W/M2K": "{}*1",
         "M2K/W": "(1/{})",
@@ -21,7 +21,7 @@ class BtuPerHourFootSquaredFahrenheit(Base_UnitType):
     """BTU/HR-FT2-F (U-Value)"""
 
     __symbol__ = "BTU/HR-FT2-F"
-    __aliases__ = ["U-IP", "BTU/HR-SF-F", "BTU/H-SF-F"]
+    __aliases__ = ["U-IP", "BTU/HR-SF-F", "BTU/H-SF-F", "BTU/HRFT²°F"]
     __factors__ = {
         "W/M2K": "{}*5.678264134",
         "M2K/W": "1/({}*5.678264134)",
@@ -34,7 +34,7 @@ class MeterSquaredKelvinPerWatt(Base_UnitType):
     """M2K/W (R-Value)"""
 
     __symbol__ = "M2K/W"
-    __aliases__ = ["R-SI"]
+    __aliases__ = ["R-SI", "M²K/W"]
     __factors__ = {
         "M2K/W": "{}*1",
         "W/M2K": "(1/{})",
@@ -83,7 +83,7 @@ class BtuPerHourFootFahrenheit(Base_UnitType):
     """BTU/HR-FT-F (Psi-Value)"""
 
     __symbol__ = "BTU/HR-FT-F"
-    __aliases__ = []
+    __aliases__ = ["BTU/HRFT°F"]
     __factors__ = {
         "W/MK": "{}*1.730734908",
         "HR-FT2-F/BTU-IN": "1/({}*12)",
@@ -103,5 +103,5 @@ class BtuPerHourFahrenheit(Base_UnitType):
     """BTU/HR-F (Chi-Value)"""
 
     __symbol__ = "BTU/HR-F"
-    __aliases__ = []
+    __aliases__ = ["BTU/HRF", "BTU/HR-F", "BTU/HR-F", "BTU/HR°F", "BTU/HR-°F"]
     __factors__ = {"W/K": "{}*0.527528", "BTU/HR-F": "{}*1"}

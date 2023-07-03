@@ -8,7 +8,7 @@ class Celsius(Base_UnitType):
     "Celsius"
 
     __symbol__ = "C"
-    __aliases__ = ["DEG C", "DEG. C", "°C"]
+    __aliases__ = ["DEGC", "DEG.C", "°C"]
     __factors__ = {"C": "{}*1", "F": "{}*1.8+32"}
 
 
@@ -17,14 +17,22 @@ class DeltaCelsius(Base_UnitType):
 
     __symbol__ = "DELTA-C"
     __aliases__ = []
-    __factors__ = {"DELTA-C": "{}*1", "DELTA-F": "{}*1.8"}
+    __factors__ = {"DELTA-C": "{}*1", "DELTA-K": "{}*1", "DELTA-F": "{}*1.8"}
+
+
+class DeltaKelvin(Base_UnitType):
+    "Delta-Kelvin"
+
+    __symbol__ = "DELTA-K"
+    __aliases__ = []
+    __factors__ = {"DELTA-K": "{}*1", "DELTA-C": "{}*1", "DELTA-F": "{}*1.8"}
 
 
 class Fahrenheit(Base_UnitType):
     "Fahrenheit"
 
     __symbol__ = "F"
-    __aliases__ = ["DEG F", "DEG. F", "°F"]
+    __aliases__ = ["DEGF", "DEG.F", "°F"]
     __factors__ = {"C": "({}-32)/1.8"}
 
 
@@ -35,5 +43,6 @@ class DeltaFahrenheit(Base_UnitType):
     __aliases__ = []
     __factors__ = {
         "DELTA-C": "{}*0.555555556",
+        "DELTA-K": "{}*0.555555556",
         "DELTA-F": "{}*1",
     }

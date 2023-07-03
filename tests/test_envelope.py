@@ -4,16 +4,19 @@
 import pytest
 from ph_units.converter import convert
 
+
 # -- SI
 def test_SI_U_value():
     assert convert(0.1, "W/M2K", "W/M2K") == 0.1
     assert convert(0.1, "W/M2K", "M2K/W") == 10
+    assert convert(0.1, "W/M²K", "M2K/W") == 10
     assert convert(0.1, "W/M2K", "BTU/HR-FT2-F") == pytest.approx(0.017611016)
     assert convert(0.1, "W/M2K", "HR-FT2-F/BTU") == pytest.approx(56.78264134)
 
 
 def test_SI_R_value():
     assert convert(2, "M2K/W", "W/M2K") == 0.5
+    assert convert(2, "M²K/W", "M2K/W") == 2
     assert convert(2, "M2K/W", "M2K/W") == 2
     assert convert(2, "M2K/W", "BTU/HR-FT2-F") == pytest.approx(0.08805508)
     assert convert(2, "M2K/W", "HR-FT2-F/BTU") == pytest.approx(11.35652827)
@@ -34,6 +37,7 @@ def test_SI_Chi_Value():
 def test_IP_U_value():
     assert convert(0.2, "BTU/HR-FT2-F", "W/M2K") == pytest.approx(1.135652827)
     assert convert(0.2, "BTU/HR-FT2-F", "M2K/W") == pytest.approx(0.880550795)
+    assert convert(0.2, "BTU/HRFT²°F", "M2K/W") == pytest.approx(0.880550795)
     assert convert(0.2, "BTU/HR-FT2-F", "BTU/HR-FT2-F") == 0.2
     assert convert(0.2, "BTU/HR-FT2-F", "HR-FT2-F/BTU") == 5
 
@@ -57,5 +61,5 @@ def test_IP_Psi_Value():
 
 
 def test_IP_Chi_Value():
-    assert convert(0.2, "BTU/HR-F", "W/K") == pytest.approx(0.1055056)
+    assert convert(1.0, "BTU/HR-F", "W/K") == pytest.approx(0.527528)
     assert convert(0.2, "BTU/HR-F", "BTU/HR-F") == 0.2
