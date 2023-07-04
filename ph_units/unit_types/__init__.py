@@ -21,6 +21,7 @@ from ph_units.unit_types import volume_flow
 from ph_units.unit_types import volume
 from ph_units.unit_types import density
 from ph_units.unit_types import emissions_factors
+from ph_units.unit_types import moisture_vapor_resistance
 
 
 UNIT_TYPE_MODULES = (
@@ -35,6 +36,7 @@ UNIT_TYPE_MODULES = (
     volume,
     density,
     emissions_factors,
+    moisture_vapor_resistance,
 )
 
 
