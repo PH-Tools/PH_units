@@ -99,9 +99,15 @@ class Unit(object):
             )
         if isinstance(other, Unit):
             if self.unit != other.unit:
-                raise TypeError(
-                    "Error: Cannot multiply '{}' by '{}'.".format(self.unit, other.unit)
-                )
+                # -- If either unit is a [%] type, should still be able to multiply them together
+                if self.unit in ["%", "-"] or other.unit in ["%", "-"]:
+                    # --find then non-precent unt
+                    unit_type = self.unit if self.unit != "%" else other.unit
+                    return Unit(self.value * other.value, unit_type)
+                else:
+                    raise TypeError(
+                        "Error: Cannot multiply '{}' by '{}'.".format(self.unit, other.unit)
+                    )
             else:
                 return Unit(self.value * other.value, self.unit)
         return Unit(self.value * other, self.unit)
@@ -154,8 +160,8 @@ class Unit(object):
 
     def __repr__(self):
         # type: () -> str
-        return "{} ({})".format(self.value, self.unit)
+        return "{}(value={!r} unit={!r})".format(self.__class__.__name__, self.value, self.unit)
 
     def __str__(self):
         # type: () -> str
-        return "{:,.3f}".format(self.value)
+        return "{:,.3f} ({})".format(self.value, self.unit)
