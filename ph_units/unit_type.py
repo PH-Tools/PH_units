@@ -8,17 +8,66 @@ try:
 except ImportError:
     pass  # Python 2.7
 
-from ph_units.converter import convert
+try:
+    # If we can, lets try and play well with dataclasses
+    from dataclasses import _FIELD, Field # type: ignore
+except ImportError:
+    # If we are in Python 2.7 (Fuck you Rhino) then fake it
+    _FIELD = None
 
+    class Field(object):
+        """Field Protocol for Unit class so it can approximate a dataclass."""
+        def __init__(self, *args, **kwargs) -> None:
+            pass
+
+from ph_units.converter import convert
 
 class Unit(object):
     """A numeric value with a unit-type."""
 
     _frozen = False
 
+    # -------------------------------------------------------------
+    # -- This will allow the Unit object to behave like a dataclass
+    # -- and serialize itself when called as part of 'asdict'
+    __annotations__ = {'value': float, 'unit': str}
+    
+    field_value = Field(
+        default=None,
+        default_factory=None,
+        init=None,
+        repr=None,
+        hash=None,
+        compare=None,
+        metadata=None,
+        kw_only=None,
+        )
+    field_value.name = "value" # type: ignore
+    field_value._field_type = _FIELD # type: ignore
+
+    field_unit = Field(
+        default=None,
+        default_factory=None,
+        init=None,
+        repr=None,
+        hash=None,
+        compare=None,
+        metadata=None,
+        kw_only=None,
+        )
+    field_unit.name = "unit"# type: ignore
+    field_unit._field_type = _FIELD # type: ignore
+
+    __dataclass_fields__ = {
+        'value': field_value,
+        'unit': field_unit,
+        }
+    # -------------------------------------------------------------
+
+
     def __init__(self, value=0.0, unit="-"):
         # type: (Union[float, str, None], str) -> None
-        self._value = float(str(value or 0).replace(",", ""))
+        self._value = float(str(value or 0).strip().replace(",", ""))
         self._unit = unit
         self._frozen = True
 
