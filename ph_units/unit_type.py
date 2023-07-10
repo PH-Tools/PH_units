@@ -32,29 +32,17 @@ class Unit(object):
     # -- and serialize itself when called as part of 'asdict'
     __annotations__ = {'value': float, 'unit': str}
     
-    field_value = Field(
-        default=None,
-        default_factory=None,
-        init=None,
-        repr=None,
-        hash=None,
-        compare=None,
-        metadata=None,
-        kw_only=None,
-        )
+    try:
+        field_value = Field(*[None] * 7) # Python 3.7
+    except:
+        field_value = Field(*[None] * 8) # Python 3.11
     field_value.name = "value" # type: ignore
     field_value._field_type = _FIELD # type: ignore
 
-    field_unit = Field(
-        default=None,
-        default_factory=None,
-        init=None,
-        repr=None,
-        hash=None,
-        compare=None,
-        metadata=None,
-        kw_only=None,
-        )
+    try:
+        field_unit = Field(*[None] * 7) # Python 3.7
+    except:
+        field_unit = Field(*[None] * 8) # Python 3.11
     field_unit.name = "unit"# type: ignore
     field_unit._field_type = _FIELD # type: ignore
 
