@@ -146,3 +146,17 @@ def test_unit_conversion():
     u1 = Unit(1.0, "m")
     u2 = u1.as_a("cm")
     assert u2.value == 100.0
+
+
+def test_invert_unit_conversion():
+    u1 = Unit(100.0, "W/M2K").inverse()
+
+    assert u1.unit == "M2K/W"
+    assert u1.value == 0.01
+
+
+def test_invert_unit_IP_UValue():
+    u1 = Unit(0.2, "BTU/HR-FT2-F").inverse()
+
+    assert u1.unit == "HR-FT2-F/BTU"
+    assert u1.value == 5.0

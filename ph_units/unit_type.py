@@ -79,6 +79,23 @@ class Unit(object):
             )
         return Unit(new_value, unit)
 
+    def _invert_unit(self, unit):
+        """Takes a unit such as "W/M2 and inverts it to M2/W."""
+        if "/" in unit:
+            unit = unit.split("/")
+            unit.reverse()
+            return "/".join(unit)
+        return unit
+
+    def inverse(self):
+        # type: () -> Unit
+        """Return a new Unit with the inverse value."""
+        inverse_unit = self._invert_unit(self.unit)
+        try:
+            return Unit(1.0 / self.value, inverse_unit)
+        except ZeroDivisionError:
+            return Unit(0.0, inverse_unit)
+
     @classmethod
     def from_dict(cls, data):
         # type: (Dict) -> Unit
