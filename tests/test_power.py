@@ -56,3 +56,15 @@ def test_kBtu_hr():
     assert convert(1, "KBTUH", "BTUH") == 1_000
     assert convert(1, "KBTUH", "W") == 293.0711111
     assert convert(1, "KBTUH", "KW") == 0.293071111
+
+
+# -- SEER
+
+def test_W_per_W() -> None:
+    assert convert(1, "W/W", "W/W") == 1
+    assert convert(1.394199, "W/W", "BTUH/W") == 4.757203787554044
+
+
+def test_Btuh_per_W() -> None:
+    assert convert(1, "BTUH/W", "BTUH/W") == 1
+    assert convert(4.757203787554044, "BTUH/W", "W/W") == 1.3932666824735869
