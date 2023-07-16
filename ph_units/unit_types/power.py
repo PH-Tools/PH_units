@@ -47,7 +47,15 @@ class WattsPerWatt(Base_UnitType):
 
     __symbol__ = "W/W"
     __aliases__ = []
-    __factors__ = {"W/W": "{}*1", "BTUHR/W": "{}*3.412141156"}
+    __factors__ = {"W/W": "{}*1", "BTUH/W": "{}*3.412141156"}
+
+
+class BtuHourPerWatt(Base_UnitType):
+    """BTU/HR-W"""
+
+    __symbol__ = "BTUH/W"
+    __aliases__ = ["BTU/HR-W", "BTU/HRW", "BTU/HRWATT", "BTUH/W", "BTUH/WATT"]
+    __factors__ = {"BTUH/W": "{}*1", "W/W": "{}*0.292875131"}
 
 
 class WattsPerFootSquared(Base_UnitType):

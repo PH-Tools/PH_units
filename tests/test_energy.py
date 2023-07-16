@@ -148,6 +148,9 @@ def test_Btu_per_ft2_per_degree_Farenheit():
     assert convert(1, "BTU/FT2F", "WH/FT2F") == pytest.approx(0.293071111)
 
 
+# -- SEER
+
+
 def test_kWh_per_kWh():
     assert convert(1, "KWH/KWH", "KWH/KWH") == 1
     assert convert(1, "KWH/KWH", "BTU/BTU") == pytest.approx(3412.14)
@@ -156,3 +159,13 @@ def test_kWh_per_kWh():
 def test_Btu_per_Btu():
     assert convert(1, "BTU/BTU", "BTU/BTU") == 1
     assert convert(1, "BTU/BTU", "KWH/KWH") == pytest.approx(0.000293071)
+
+
+def test_W_per_W() -> None:
+    assert convert(1, "W/W", "W/W") == 1
+    assert convert(1.394199, "W/W", "BTUH/W") == 4.757203787554044
+
+
+def test_Btuh_per_W() -> None:
+    assert convert(1, "BTUH/W", "BTUH/W") == 1
+    assert convert(4.757203787554044, "BTUH/W", "W/W") == 1.3932666824735869
