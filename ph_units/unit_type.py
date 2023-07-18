@@ -155,7 +155,7 @@ class Unit(object):
             if self.unit != other.unit:
                 # -- If either unit is a [%] type, should still be able to multiply them together
                 if self.unit in ["%", "-"] or other.unit in ["%", "-"]:
-                    # --find then non-precent unt
+                    # --find then non-percent unt
                     unit_type = self.unit if self.unit != "%" else other.unit
                     return Unit(self.value * other.value, unit_type)
                 else:
@@ -165,6 +165,27 @@ class Unit(object):
             else:
                 return Unit(self.value * other.value, self.unit)
         return Unit(self.value * other, self.unit)
+
+    def __truediv__(self, other):
+        # type: (Union[Unit, int, float]) -> Unit
+        if not isinstance(other, (Unit, float, int)):
+            raise TypeError(
+                "Error: Cannot divide '{}' by '{}'.".format(type(other), self.__class__.__name__)
+            )
+        if isinstance(other, Unit):
+            if self.unit != other.unit:
+                # -- If either unit is a [%] type, should still be able to multiply them together
+                if self.unit in ["%", "-"] or other.unit in ["%", "-"]:
+                    # --find then non-percent unt
+                    unit_type = self.unit if self.unit != "%" else other.unit
+                    return Unit(self.value / other.value, unit_type)
+                else:
+                    raise TypeError(
+                        "Error: Cannot divide '{}' by '{}'.".format(self.unit, other.unit)
+                    )
+            else:
+                return Unit(self.value / other.value, "-")
+        return Unit(self.value / other, self.unit)
 
     def __bool__(self):
         # type: () -> bool
@@ -183,23 +204,23 @@ class Unit(object):
         return 1
 
     def __eq__(self, other):
-        # type: (Unit) -> bool
+        # type: (Any) -> bool
         if not isinstance(other, Unit):
-            return False
+            return self.value == other
         return self.value == other.value and self.unit == other.unit
 
     def __le__(self, other):
-        # type: (Unit) -> bool
+        # type: (Any) -> bool
         if not isinstance(other, Unit):
-            return False
+            return self.value <= other
         if not self.unit == other.unit:
             raise TypeError("Cannot compare '{}' to '{}'.".format(self.unit, other.unit))
         return self.value <= other.value
 
     def __lt__(self, other):
-        # type: (Unit) -> bool
+        # type: (Any) -> bool
         if not isinstance(other, Unit):
-            return False
+            return self.value < other
         if not self.unit == other.unit:
             raise TypeError("Cannot compare '{}' to '{}'.".format(self.unit, other.unit))
         return self.value < other.value

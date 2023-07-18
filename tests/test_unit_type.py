@@ -160,3 +160,51 @@ def test_invert_unit_IP_UValue():
 
     assert u1.unit == "HR-FT2-F/BTU"
     assert u1.value == 5.0
+
+
+def test_divide_unit_SI():
+    u1 = Unit(100.0, "M")
+    u2 = Unit(10.0, "M")
+    u3 = u1 / u2
+    assert u3.value == 10.0
+    assert u3.unit == "-"
+
+
+def test_cannot_divide_different_units():
+    u1 = Unit(100.0, "M")
+    u2 = Unit(10.0, "S")
+    with pytest.raises(TypeError):
+        u3 = u1 / u2
+
+
+def test_divide_unit_by_float():
+    u1 = Unit(100.0, "M")
+    u2 = 10.0
+    u3 = u1 / u2
+    assert u3.value == 10.0
+    assert u3.unit == "M"
+
+
+def test_lt_unit_and_float():
+    u1 = Unit(1.0, "M")
+    u2 = 2.0
+    assert u1 < u2
+
+
+def test_lt_two_units():
+    u1 = Unit(1.0, "M")
+    u2 = Unit(2.0, "M")
+    assert u1 < u2
+
+
+def test_cant_lt_two_different_units():
+    u1 = Unit(1.0, "M")
+    u2 = Unit(2.0, "S")
+    with pytest.raises(TypeError):
+        assert u1 < u2
+
+
+def test_eq_unit_and_int():
+    u1 = Unit(1.0, "M")
+    u2 = 1
+    assert u1 == u2
