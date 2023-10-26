@@ -21,6 +21,7 @@ def parse_input(_input_string):
         '0.5'    returns -> ('0.5', None)
         0.5      returns -> ('0.5', None)
         '0.5Btu/hr-Ft2-F' returns -> ('0.5', 'BTU/HR-FT2-F')
+        '45,567 ft2' returns -> ('45567', 'FT2')
     """
 
     # -- First, try and split the input string at the first alpha-character found
@@ -34,6 +35,7 @@ def parse_input(_input_string):
 
     input_string_cleaned = str(_input_string).strip().upper()
     input_string_cleaned = input_string_cleaned.replace("'", "FT").replace('"', "IN")
+    input_string_cleaned = re.sub(r"(?<=\d),(?=\d)", "", input_string_cleaned)
 
     # -------------------------------------------------------------------------
     # -- Find the alpha and the numeric parts

@@ -18,7 +18,6 @@ class WattHour(Base_UnitType):
         "KJ": "{}*3.6",
     }
 
-
 class KiloWattHour(Base_UnitType):
     """KWH"""
 
@@ -94,6 +93,42 @@ class KiloJoule(Base_UnitType):
     }
 
 
+
+# ----------------- Energy Per Person ---------------
+
+
+class KiloWattHourPerPerson(Base_UnitType):
+    """KWH/PERSON"""
+
+    __symbol__ = "KWH/PERSON"
+    __aliases__ = ["KWH/PERSON-YR", "KWH/PERSON-A", "KWH/PERSON-MONTH"]
+    __factors__ = {
+        "WH/PERSON": "{}*1000",
+        "KWH/PERSON": "{}*1",
+        "BTU/PERSON": "{}*3412.14",
+        "KBTU/PERSON": "{}*3.41214",
+        "MJ/PERSON": "{}*3.6",
+        "KJ/PERSON": "{}*3600",
+    }
+
+
+class KiloBTUPerPerson(Base_UnitType):
+    """KBTU/PERSON"""
+
+    __symbol__ = "KBTU/PERSON"
+    __aliases__ = []
+    __factors__ = {
+        "WH/PERSON": "{}*293.071",
+        "KWH/PERSON": "{}*0.293071",
+        "BTU/PERSON": "{}*1000",
+        "KBTU/PERSON": "{}*1",
+        "MJ/PERSON": "{}*1.05506",
+        "KJ/PERSON": "{}*1055.06",
+    }
+
+
+
+
 # ----------------- Energy Per Area -----------------
 
 
@@ -139,7 +174,7 @@ class KiloWattHoursPerFootSquared(Base_UnitType):
     """KWH/FT2"""
 
     __symbol__ = "KWH/FT2"
-    __aliases__ = ["KWH/SF"]
+    __aliases__ = ["KWH/SF", "KWH/FT²"]
     __factors__ = {
         "WH/M2": "{}*10763.9",
         "WH/FT2": "{}*1000",

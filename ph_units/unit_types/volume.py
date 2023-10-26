@@ -47,7 +47,7 @@ class FootCubed(Base_UnitType):
     """Foot Cubed"""
 
     __symbol__ = "FT3"
-    __aliases__ = ["CF", "FT3", "FT³", "CUBIC FOOT", "CUBIC FEET"]
+    __aliases__ = ["CF", "FT3", "FT³", "ft³", "CUBIC FOOT", "CUBIC FEET"]
     __factors__ = {
         "M3": "{}*0.028316847",
         "FT3": "{}*1",

@@ -15,6 +15,10 @@ from ph_units.unit_types import build_unit_type_dicts
 
 unit_type_dict, unit_type_alias_dict = build_unit_type_dicts()
 
+class UnitTypeNameNotFound(Exception):
+    def __init__(self, message):
+        self.message = message
+        super().__init__(self.message)
 
 def _standardize_unit_name(_input, _unit_type_alias_dict):
     # type: (str, Dict[str, str]) -> str
@@ -33,7 +37,7 @@ def _standardize_unit_name(_input, _unit_type_alias_dict):
     try:
         input_unit = _unit_type_alias_dict[_input_string]
     except KeyError:
-        raise Exception(
+        raise UnitTypeNameNotFound(
             "\n\tI do not know how to understand the input unit: '{}'?\nValid formats include: {}".format(
                 _input_string, sorted(_unit_type_alias_dict.keys())
             )
