@@ -37,11 +37,14 @@ def _standardize_unit_name(_input, _unit_type_alias_dict):
     try:
         input_unit = _unit_type_alias_dict[_input_string]
     except KeyError:
-        raise UnitTypeNameNotFound(
-            "\n\tI do not know how to understand the input unit: '{}'?\nValid formats include: {}".format(
-                _input_string, sorted(_unit_type_alias_dict.keys())
+        if _input_string == "%":
+            input_unit = "%"
+        else:
+            raise UnitTypeNameNotFound(
+                "\n\tI do not know how to understand the input unit: '{}'?\nValid formats include: {}".format(
+                    _input_string, sorted(_unit_type_alias_dict.keys())
+                )
             )
-        )
 
     return input_unit
 

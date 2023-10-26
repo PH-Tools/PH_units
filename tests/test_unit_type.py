@@ -8,6 +8,18 @@ def test_default_Unit():
     assert u.value == 0.0
     assert u.unit == "-"
 
+def test_percent_Unit():
+    u = Unit(1.0, "%")
+    assert u.value == 1.0
+    assert u.unit == "%"
+
+
+def test_add_percent_unit():   
+    u1 = Unit(1.0, "%")
+    u2 = Unit(1.0, "%")
+    u3 = u1 + u2
+    assert u3.value == 2.0
+    assert u3.unit == "%"
 
 def test_Unit_is_frozen():
     u = Unit()
