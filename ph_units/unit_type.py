@@ -71,12 +71,12 @@ class Unit(object):
 
     def as_a(self, unit):
         # type: (str) -> Unit
-        """Return a new Unit in the specified unit-type."""
-        new_value = convert(self.value, self.unit, unit)
-        if not new_value:
-            raise ValueError(
-                "Cannot convert from '{}' to '{}'.".format(self.unit, unit)
-            )
+        """Return a new Unit with the value converted to the specified unit-type."""
+        try:
+            new_value = convert(self.value, self.unit, unit)
+        except Exception as e:
+            msg = "Error trying to convert '{}' from '{}' to '{}'".format(self.value, self.unit, unit)
+            raise ValueError(msg, e)
         return Unit(new_value, unit)
 
     def _invert_unit(self, unit):
