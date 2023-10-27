@@ -12,12 +12,12 @@ try:
     # If we can, lets try and play well with dataclasses
     from dataclasses import _FIELD, Field # type: ignore
 except ImportError:
-    # If we are in Python 2.7 (Fuck you Rhino) then fake it
+    # If we are in Python 2.7 (Fuck you Rhino 7) then fake it
     _FIELD = None
 
     class Field(object):
         """Field Protocol for Unit class so it can approximate a dataclass."""
-        def __init__(self, *args, **kwargs) -> None:
+        def __init__(self, *args, **kwargs):
             pass
 
 from ph_units.converter import convert
@@ -240,3 +240,6 @@ class Unit(object):
     def __str__(self):
         # type: () -> str
         return "{:,.3f} ({})".format(self.value, self.unit)
+
+    def ToString(self):
+        return str(self)
