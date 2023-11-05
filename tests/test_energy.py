@@ -150,11 +150,11 @@ def test_Btu_per_ft2_per_degree_Farenheit():
 
 def test_kWh_per_kWh():
     assert convert(1, "KWH/KWH", "KWH/KWH") == 1
-    assert convert(1, "KWH/KWH", "BTU/BTU") == pytest.approx(3412.14)
+    assert convert(1, "KWH/KWH", "BTU/BTU") == 1
 
 
 def test_Btu_per_Btu():
     assert convert(1, "BTU/BTU", "BTU/BTU") == 1
-    assert convert(1, "BTU/BTU", "KWH/KWH") == pytest.approx(0.000293071)
+    assert convert(1, "BTU/BTU", "KWH/KWH") == 1
 
 

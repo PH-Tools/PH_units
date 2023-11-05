@@ -320,7 +320,7 @@ class KiloWattHourPerKiloWattHour(Base_UnitType):
 
     __symbol__ = "KWH/KWH"
     __aliases__ = ["KWH/KWH"]
-    __factors__ = {"KWH/KWH": "{}*1", "BTU/BTU": "{}*3412.14"}
+    __factors__ = {"KWH/KWH": "{}*1", "BTU/BTU": "{}*1"}
 
 
 class BtuPerBtu(Base_UnitType):
@@ -328,4 +328,4 @@ class BtuPerBtu(Base_UnitType):
 
     __symbol__ = "BTU/BTU"
     __aliases__ = ["BTU/BTU"]
-    __factors__ = {"KWH/KWH": "{}*0.000293071", "BTU/BTU": "{}*1"}
+    __factors__ = {"KWH/KWH": "{}*1", "BTU/BTU": "{}*1"}
