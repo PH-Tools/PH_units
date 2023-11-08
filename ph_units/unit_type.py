@@ -235,7 +235,7 @@ class Unit(object):
 
     def __repr__(self):
         # type: () -> str
-        return "{}(value={!r} unit={!r})".format(self.__class__.__name__, self.value, self.unit)
+        return "{}(value={!r}, unit={!r})".format(self.__class__.__name__, self.value, self.unit)
 
     def __str__(self):
         # type: () -> str
