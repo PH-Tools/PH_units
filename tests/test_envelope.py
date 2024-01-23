@@ -10,15 +10,23 @@ def test_SI_U_value():
     assert convert(0.1, "W/M2K", "W/M2K") == 0.1
     assert convert(0.1, "W/M2K", "M2K/W") == 10
     assert convert(0.1, "W/M²K", "M2K/W") == 10
+    # SI U-Value:
     assert convert(0.1, "W/M2K", "BTU/HR-FT2-F") == pytest.approx(0.017611016)
+    assert convert(2.0, "W/M2K", "BTU/HR-FT2-F") == pytest.approx(0.352220318)
+    # SI R-Value:
     assert convert(0.1, "W/M2K", "HR-FT2-F/BTU") == pytest.approx(56.78264134)
+    assert convert(2.0, "W/M2K", "HR-FT2-F/BTU") == pytest.approx(2.839132067)
 
 
 def test_SI_R_value():
     assert convert(2, "M2K/W", "W/M2K") == 0.5
     assert convert(2, "M²K/W", "M2K/W") == 2
     assert convert(2, "M2K/W", "M2K/W") == 2
+    # To U-IP Value:
+    assert convert(0.5, "M2K/W", "BTU/HR-FT2-F") == pytest.approx(0.352220318)
     assert convert(2, "M2K/W", "BTU/HR-FT2-F") == pytest.approx(0.08805508)
+    # TO R-IP Value:
+    assert convert(0.5, "M2K/W", "HR-FT2-F/BTU") == pytest.approx(2.839132067)
     assert convert(2, "M2K/W", "HR-FT2-F/BTU") == pytest.approx(11.35652827)
 
 
