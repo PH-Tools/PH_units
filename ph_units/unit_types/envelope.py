@@ -60,7 +60,7 @@ class HourFootSquaredFahrenheitPerBtuInch(Base_UnitType):
     """HR-FT2-F/BTU-IN (R-per-inch)"""
 
     __symbol__ = "HR-FT2-F/BTU-IN"
-    __aliases__ = ["R/IN", "R-IN", "H-SF-F/BTU-IN"]
+    __aliases__ = ["R/IN", "R-IN", "H-SF-F/BTU-IN", "R/INCH"]
     __factors__ = {
         "W/MK": "(1/({}*12))*1.730734908",
         "BTU/HR-FT-F": "1/({}*12)",
