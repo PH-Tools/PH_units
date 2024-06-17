@@ -4,7 +4,7 @@
 """Function to parse input string from the user in numeric and 'unit' parts."""
 
 try:
-    from typing import Union, Optional, Tuple
+    from typing import Optional, Tuple, Union
 except ImportError:
     pass  # IronPython 2.7
 

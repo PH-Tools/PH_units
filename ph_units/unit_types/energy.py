@@ -18,6 +18,7 @@ class WattHour(Base_UnitType):
         "KJ": "{}*3.6",
     }
 
+
 class KiloWattHour(Base_UnitType):
     """KWH"""
 
@@ -93,7 +94,6 @@ class KiloJoule(Base_UnitType):
     }
 
 
-
 # ----------------- Energy Per Person ---------------
 
 
@@ -125,8 +125,6 @@ class KiloBTUPerPerson(Base_UnitType):
         "MJ/PERSON": "{}*1.05506",
         "KJ/PERSON": "{}*1055.06",
     }
-
-
 
 
 # ----------------- Energy Per Area -----------------

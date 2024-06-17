@@ -4,16 +4,17 @@
 """Functions for converting Values from one unit to another (ie: meter->foot)."""
 
 try:
-    from typing import Union, Optional, Tuple, Dict, List
+    from typing import Dict, List, Optional, Tuple, Union
 except ImportError:
     pass  # IronPython 2.7
 
 from copy import copy
 
-from ph_units.unit_types._base import Base_UnitType
 from ph_units.unit_types import build_unit_type_dicts
+from ph_units.unit_types._base import Base_UnitType
 
 unit_type_dict, unit_type_alias_dict = build_unit_type_dicts()
+
 
 class UnitTypeNameNotFound(Exception):
     def __init__(self, message):
@@ -26,20 +27,21 @@ def _find_valid_unit_names_matching_first_letter(_unit_type_alias_dict, _input_s
     # type: (Dict[str, str], str) -> List[str]
     """Find all valid unit-type names that start with a given letter."""
     matches = []
-    
+
     try:
         first_letter = str(_input_string).strip()[0].upper()
     except IndexError:
         return matches
-    
+
     for k in sorted(_unit_type_alias_dict.keys()):
         try:
             if k[0] == first_letter:
                 matches.append(k)
         except IndexError:
             pass
-        
+
     return matches
+
 
 def _standardize_unit_name(_input, _unit_type_alias_dict):
     # type: (str, Dict[str, str]) -> str
@@ -61,12 +63,16 @@ def _standardize_unit_name(_input, _unit_type_alias_dict):
         if _input_string == "%":
             input_unit = "%"
         else:
-            suggested_matches = _find_valid_unit_names_matching_first_letter(_unit_type_alias_dict, _input_string)
+            suggested_matches = _find_valid_unit_names_matching_first_letter(
+                _unit_type_alias_dict, _input_string
+            )
             raise UnitTypeNameNotFound(
-                "\nI do not understand the unit: '{}'? "\
+                "\nI do not understand the unit: '{}'? "
                 "\nPerhaps you meant on of these: '{}'?"
                 "\n\nValid formats include only: {}".format(
-                    _input_string, suggested_matches, sorted(_unit_type_alias_dict.keys())
+                    _input_string,
+                    suggested_matches,
+                    sorted(_unit_type_alias_dict.keys()),
                 )
             )
 

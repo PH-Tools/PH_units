@@ -2,6 +2,7 @@
 # -*- Python Version: 2.7 -*-
 
 import pytest
+
 from ph_units.converter import convert, unit_type_dict
 
 
@@ -59,6 +60,7 @@ def test_kBtu_hr():
 
 
 # -- SEER
+
 
 def test_W_per_W() -> None:
     assert convert(1, "W/W", "W/W") == 1

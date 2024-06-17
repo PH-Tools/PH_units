@@ -44,6 +44,5 @@ def test_parse_string_with_units():
     assert parse_input("-456,678.0 BTU/HR-FT-F") == ("-456678.0", "BTU/HR-FT-F")
 
 
-
 def test_parse_string_no_value():
     assert parse_input("Missing Value") == ("", "MISSING VALUE")

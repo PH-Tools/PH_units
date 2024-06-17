@@ -2,6 +2,7 @@
 # -*- Python Version: 2.7 -*-
 
 import pytest
+
 from ph_units.converter import convert
 
 
@@ -156,5 +157,3 @@ def test_kWh_per_kWh():
 def test_Btu_per_Btu():
     assert convert(1, "BTU/BTU", "BTU/BTU") == 1
     assert convert(1, "BTU/BTU", "KWH/KWH") == 1
-
-

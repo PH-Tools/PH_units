@@ -36,4 +36,4 @@ class FootSquarePerPerson(Base_UnitType):
         "FT2-PERSON",
         "FT²/PERSON",
     ]
-    __factors__ = { "M2/PERSON": "{}*0.09290304", "FT2/PERSON": "{}*1"}
+    __factors__ = {"M2/PERSON": "{}*0.09290304", "FT2/PERSON": "{}*1"}
