@@ -3,5 +3,5 @@ coverage
 pytest
 setuptools
 wheel
-twine
+twine!=5.1.0
 build
