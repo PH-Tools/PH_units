@@ -57,57 +57,91 @@ def test_Btu_foot_squared():
 
 
 def test_wh():
-    assert convert(1, "WH", "WH") == 1
     assert convert(1, "WH", "BTU") == pytest.approx(3.41214)
-    assert convert(1, "WH", "KWH") == 0.001
     assert convert(1, "WH", "KBTU") == pytest.approx(0.003412141633)
-    assert convert(1, "WH", "MJ") == pytest.approx(0.0036)
+    assert convert(1, "WH", "WH") == 1
+    assert convert(1, "WH", "KWH") == 0.001
+    assert convert(1, "WH", "J") == 3600
     assert convert(1, "WH", "KJ") == pytest.approx(3.6)
+    assert convert(1, "WH", "MJ") == pytest.approx(0.0036)
+    assert convert(1, "WH", "GJ") == pytest.approx(0.0000036)
 
 
 def test_KWH():
-    assert convert(1, "KWH", "WH") == 1000
     assert convert(1, "KWH", "BTU") == pytest.approx(3412.141633)
-    assert convert(1, "KWH", "KWH") == 1
     assert convert(1, "KWH", "KBTU") == pytest.approx(3.412141633)
-    assert convert(1, "KWH", "MJ") == pytest.approx(3.6)
+    assert convert(1, "KWH", "WH") == 1000
+    assert convert(1, "KWH", "KWH") == 1
+    assert convert(1, "KWH", "J") == pytest.approx(3600000)
     assert convert(1, "KWH", "KJ") == pytest.approx(3600)
+    assert convert(1, "KWH", "MJ") == pytest.approx(3.6)
+    assert convert(1, "KWH", "GJ") == pytest.approx(0.0036)
 
 
 def test_BTU():
-    assert convert(1, "BTU", "WH") == pytest.approx(0.293071)
     assert convert(1, "BTU", "BTU") == 1
-    assert convert(1, "BTU", "KWH") == pytest.approx(0.000293071)
     assert convert(1, "BTU", "KBTU") == pytest.approx(0.001)
-    assert convert(1, "BTU", "MJ") == pytest.approx(0.00105506)
+    assert convert(1, "BTU", "WH") == pytest.approx(0.293071)
+    assert convert(1, "BTU", "KWH") == pytest.approx(0.000293071)
+    assert convert(1, "BTU", "J") == pytest.approx(1055.06)
     assert convert(1, "BTU", "KJ") == pytest.approx(1.05506)
+    assert convert(1, "BTU", "MJ") == pytest.approx(0.00105506)
+    assert convert(1, "BTU", "GJ") == pytest.approx(0.00000105506)
 
 
 def test_KBTU():
-    assert convert(1, "KBTU", "WH") == pytest.approx(293.071)
     assert convert(1, "KBTU", "BTU") == 1000
-    assert convert(1, "KBTU", "KWH") == pytest.approx(0.293071)
     assert convert(1, "KBTU", "KBTU") == 1
-    assert convert(1, "KBTU", "MJ") == pytest.approx(1.05506)
+    assert convert(1, "KBTU", "WH") == pytest.approx(293.071)
+    assert convert(1, "KBTU", "KWH") == pytest.approx(0.293071)
+    assert convert(1, "KBTU", "J") == pytest.approx(1055060)
     assert convert(1, "KBTU", "KJ") == pytest.approx(1055.06)
+    assert convert(1, "KBTU", "MJ") == pytest.approx(1.05506)
+    assert convert(1, "KBTU", "GJ") == pytest.approx(0.00105506)
 
 
-def test_MegaJoule():
-    assert convert(1, "MJ", "WH") == pytest.approx(277.778)
-    assert convert(1, "MJ", "BTU") == pytest.approx(947.817)
-    assert convert(1, "MJ", "KWH") == pytest.approx(0.277778)
-    assert convert(1, "MJ", "KBTU") == pytest.approx(0.947817)
-    assert convert(1, "MJ", "MJ") == 1
-    assert convert(1, "MJ", "KJ") == pytest.approx(1000)
+def test_Joule():
+    assert convert(1, "J", "BTU") == pytest.approx(0.000947817)
+    assert convert(1, "J", "KBTU") == pytest.approx(0.000000947817)
+    assert convert(1, "J", "WH") == pytest.approx(0.000277778)
+    assert convert(1, "J", "KWH") == pytest.approx(0.00000027778)
+    assert convert(1, "J", "J") == 1
+    assert convert(1, "J", "KJ") == pytest.approx(0.001)
+    assert convert(1, "J", "MJ") == pytest.approx(0.000001)
+    assert convert(1, "J", "GJ") == pytest.approx(0.000000001)
 
 
 def test_KiloJoule():
-    assert convert(1, "KJ", "WH") == pytest.approx(0.277778)
     assert convert(1, "KJ", "BTU") == pytest.approx(0.947817)
-    assert convert(1, "KJ", "KWH") == pytest.approx(0.000277778)
     assert convert(1, "KJ", "KBTU") == pytest.approx(0.000947817)
+    assert convert(1, "KJ", "WH") == pytest.approx(0.277778)
+    assert convert(1, "KJ", "KWH") == pytest.approx(0.000277778)
+    assert convert(1, "KJ", "J") == 1000
     assert convert(1, "KJ", "MJ") == pytest.approx(0.001)
     assert convert(1, "KJ", "KJ") == 1
+    assert convert(1, "KJ", "GJ") == pytest.approx(0.000001)
+
+
+def test_MegaJoule():
+    assert convert(1, "MJ", "BTU") == pytest.approx(947.817)
+    assert convert(1, "MJ", "KBTU") == pytest.approx(0.947817)
+    assert convert(1, "MJ", "WH") == pytest.approx(277.778)
+    assert convert(1, "MJ", "KWH") == pytest.approx(0.277778)
+    assert convert(1, "MJ", "J") == pytest.approx(1000000)
+    assert convert(1, "MJ", "KJ") == pytest.approx(1000)
+    assert convert(1, "MJ", "MJ") == 1
+    assert convert(1, "MJ", "GJ") == pytest.approx(0.001)
+
+
+def test_GigaJoule():
+    assert convert(1, "GJ", "BTU") == pytest.approx(947817)
+    assert convert(1, "GJ", "KBTU") == pytest.approx(947.817)
+    assert convert(1, "GJ", "WH") == pytest.approx(277778)
+    assert convert(1, "GJ", "KWH") == pytest.approx(277.778)
+    assert convert(1, "GJ", "J") == pytest.approx(1000000000)
+    assert convert(1, "GJ", "KJ") == pytest.approx(1000000)
+    assert convert(1, "GJ", "MJ") == pytest.approx(1000)
+    assert convert(1, "GJ", "GJ") == 1
 
 
 def test_MegaJoule_per_m3_DegreeKelvin():
