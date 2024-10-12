@@ -58,6 +58,7 @@ class FootSquare(Base_UnitType):
         "SQ-FT",
         "SQ-FOOT",
         "FT²",
+        "SQ-FEET",
     ]
     __factors__ = {
         "M2": "{}*0.092903",
@@ -80,6 +81,7 @@ class InchSquare(Base_UnitType):
         "SQ-IN",
         "SQ-INCH",
         "IN²",
+        "SQ-INCHES",
     ]
     __factors__ = {
         "M2": "{}*0.00064516",

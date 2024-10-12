@@ -50,6 +50,7 @@ def test_inch_squared():
     assert convert(1, "IN2", "MM2") == pytest.approx(645.16)
     assert convert(1, "IN2", "CM2") == pytest.approx(6.4516)
     assert convert(1, "IN2", "M2") == pytest.approx(0.00064516)
+    assert convert(1, "SQ-INCHES", "M2") == pytest.approx(0.00064516)
 
 
 # --- Concentrations ----------------------------------------------------------
