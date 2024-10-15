@@ -7,6 +7,10 @@ from ph_units.converter import convert
 from ph_units.unit_type import Unit
 
 
+def test_space():
+    assert convert(" ", "M2", "M2") == 0
+
+
 def test_meter_squared():
     assert convert(1, "M2", "M2") == 1
     assert convert(1, "M²", "M2") == 1

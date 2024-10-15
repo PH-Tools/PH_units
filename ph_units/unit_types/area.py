@@ -8,7 +8,7 @@ class MeterSquare(Base_UnitType):
     """Meter Square"""
 
     __symbol__ = "M2"
-    __aliases__ = ["SM", "SQM", "SQ.M", "SQ-M", "SQ-METER", "SQ-METERS", "M²"]
+    __aliases__ = ["SM", "SQM", "SQ.M", "SQ-M", "SQ-METER", "SQ-METERS", "M²", "m²"]
     __factors__ = {
         "M2": "{}*1",
         "CM2": "{}*10_000",
@@ -22,7 +22,15 @@ class CentimeterSquare(Base_UnitType):
     """Centimeter Square"""
 
     __symbol__ = "CM2"
-    __aliases__ = ["SQCM", "SQ.CM", "SQ-CM", "SQ-CENTIMETER", "SQ-CENTIMETERS", "CM²"]
+    __aliases__ = [
+        "SQCM",
+        "SQ.CM",
+        "SQ-CM",
+        "SQ-CENTIMETER",
+        "SQ-CENTIMETERS",
+        "CM²",
+        "cm²",
+    ]
     __factors__ = {
         "MM2": "{}*100",
         "CM2": "{}*1",
@@ -36,7 +44,15 @@ class MillimeterSquare(Base_UnitType):
     """Millimeter Square"""
 
     __symbol__ = "MM2"
-    __aliases__ = ["SQMM", "SQ.MM", "SQ-MM", "SQ-MILLIMETER", "SQ-MILLIMETERS", "MM²"]
+    __aliases__ = [
+        "SQMM",
+        "SQ.MM",
+        "SQ-MM",
+        "SQ-MILLIMETER",
+        "SQ-MILLIMETERS",
+        "MM²",
+        "mm²",
+    ]
     __factors__ = {
         "MM2": "{}*1",
         "CM2": "{}*0.01",
@@ -58,6 +74,7 @@ class FootSquare(Base_UnitType):
         "SQ-FT",
         "SQ-FOOT",
         "FT²",
+        "ft²",
         "SQ-FEET",
     ]
     __factors__ = {
@@ -81,6 +98,7 @@ class InchSquare(Base_UnitType):
         "SQ-IN",
         "SQ-INCH",
         "IN²",
+        "in²",
         "SQ-INCHES",
     ]
     __factors__ = {

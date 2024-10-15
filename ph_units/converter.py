@@ -184,6 +184,9 @@ def convert(_value, _input_unit, _target_unit):
     if _value is None:
         return None
 
+    if str(_value).strip() == "":
+        return 0
+
     input_unit, target_unit = _clean_user_inputs(
         _input_unit, _target_unit, unit_type_alias_dict
     )
