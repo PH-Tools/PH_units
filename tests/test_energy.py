@@ -56,6 +56,18 @@ def test_Btu_foot_squared():
     assert convert(1, "BTU/FT2", "KBTU/FT2") == 0.001
 
 
+def test_therm():
+    assert convert(1, "THERM", "THERM") == 1
+    assert convert(convert(1, "THERM", "BTU"), "BTU", "THERM") == pytest.approx(1)
+    assert convert(convert(1, "THERM", "KBTU"), "KBTU", "THERM") == pytest.approx(1)
+    assert convert(convert(1, "THERM", "WH"), "WH", "THERM") == pytest.approx(1)
+    assert convert(convert(1, "THERM", "KWH"), "KWH", "THERM") == pytest.approx(1)
+    assert convert(convert(1, "THERM", "J"), "J", "THERM") == pytest.approx(1)
+    assert convert(convert(1, "THERM", "KJ"), "KJ", "THERM") == pytest.approx(1)
+    assert convert(convert(1, "THERM", "MJ"), "MJ", "THERM") == pytest.approx(1)
+    assert convert(convert(1, "THERM", "GJ"), "GJ", "THERM") == pytest.approx(1)
+
+
 def test_wh():
     assert convert(1, "WH", "BTU") == pytest.approx(3.41214)
     assert convert(1, "WH", "KBTU") == pytest.approx(0.003412141633)
