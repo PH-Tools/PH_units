@@ -203,3 +203,20 @@ def test_kWh_per_kWh():
 def test_Btu_per_Btu():
     assert convert(1, "BTU/BTU", "BTU/BTU") == 1
     assert convert(1, "BTU/BTU", "KWH/KWH") == 1
+
+
+def test_cost_per_kwh():
+    assert convert(1, "COST/KWH", "COST/KWH") == 1
+    assert convert(0.0423, "COST/KWH", "COST/THERM") == pytest.approx(1.239690799999995)
+    assert convert(
+        convert(1, "COST/KWH", "COST/THERM"), "COST/THERM", "COST/KWH"
+    ) == pytest.approx(1)
+
+
+def test_cost_per_THERM():
+    assert convert(1, "COST/THERM", "COST/THERM") == 1
+    assert convert(1, "COST/THERM", "COST/KWH") == pytest.approx(0.034121411564883894)
+    assert convert(1.24, "COST/THERM", "COST/KWH") == pytest.approx(0.04231055034045603)
+    assert convert(
+        convert(1, "COST/THERM", "COST/KWH"), "COST/KWH", "COST/THERM"
+    ) == pytest.approx(1)

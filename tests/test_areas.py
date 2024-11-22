@@ -63,10 +63,13 @@ def test_inch_squared():
 def test_cost_per_meter_squared():
     assert convert(1, "COST/M2", "COST/M2") == 1
     assert convert(1, "COST/M2", "COST/FT2") == pytest.approx(0.09290304)
+    assert convert(12.34, "COST/M2", "COST/FT2") == pytest.approx(1.1464235136)
     assert Unit(1, "COST/M2").as_a("COST/FT2") == pytest.approx(0.09290304)
+    assert Unit(1, "COST/M2").as_a("COST/FT2").as_a("COST/M2") == pytest.approx(1)
 
 
 def test_cost_per_foot_squared():
     assert convert(1, "COST/FT2", "COST/M2") == pytest.approx(10.76391042)
     assert convert(1, "COST/FT2", "COST/FT2") == 1
     assert Unit(1, "COST/FT2").as_a("COST/M2") == pytest.approx(10.76391042)
+    assert Unit(1, "COST/FT2").as_a("COST/M2").as_a("COST/FT2") == pytest.approx(1)

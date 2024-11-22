@@ -399,3 +399,24 @@ class BtuPerBtu(Base_UnitType):
     __symbol__ = "BTU/BTU"
     __aliases__ = ["BTU/BTU"]
     __factors__ = {"KWH/KWH": "{}*1", "BTU/BTU": "{}*1"}
+
+
+# ----------------- ENERGY COST ---------------------
+
+
+class CostPerTherm(Base_UnitType):
+    __symbol__ = "COST/THERM"
+    __aliases__ = ["COST/THERM"]
+    __factors__ = {
+        "COST/THERM": "{}*1",
+        "COST/KWH": "{}/29.307111111111",
+    }
+
+
+class CostPerKiloWattHour(Base_UnitType):
+    __symbol__ = "COST/KWH"
+    __aliases__ = ["COST/KWH"]
+    __factors__ = {
+        "COST/KWH": "{}*1",
+        "COST/THERM": "{}*29.307111111111",
+    }
