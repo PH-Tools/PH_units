@@ -46,3 +46,4 @@ def test_parse_string_with_units():
 
 def test_parse_string_no_value():
     assert parse_input("Missing Value") == ("", "MISSING VALUE")
+

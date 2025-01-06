@@ -8,7 +8,7 @@ class WattsPerMeterSquaredKelvin(Base_UnitType):
     """W/M2K (U-Value)"""
 
     __symbol__ = "W/M2K"
-    __aliases__ = ["U-SI", "W/M²K"]
+    __aliases__ = ["U-SI", "W/M²K", "W/M2-K", "W/M²-K"]
     __factors__ = {
         "W/M2K": "{}*1",
         "M2K/W": "(1/{})",
