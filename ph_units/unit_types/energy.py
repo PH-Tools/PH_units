@@ -255,6 +255,21 @@ class KiloWattHoursPerFootSquared(Base_UnitType):
     }
 
 
+class KiloWattHoursPerInchSquared(Base_UnitType):
+    """KWH/IN2"""
+
+    __symbol__ = "KWH/IN2"
+    __aliases__ = ["KWH/IN²", 'KWH/SQ-Inch', "KWH/SQ-Inches"]
+    __factors__ = {
+        "WH/M2": "({}*1000)/0.00064516",
+        "WH/FT2": "{}*1000*144",
+        "KWH/M2": "{}*1_550.0031000062001",
+        "KWH/IN2": "{}*1",
+        "KWH/FT2": "{}*144",
+        "BTU/FT2": "{}*3412.142*144",
+        "KBTU/FT2": "{}*3.412142*144",
+    }
+
 class KilowattHoursPerMeterSquared(Base_UnitType):
     """KWH/M2"""
 
@@ -264,8 +279,9 @@ class KilowattHoursPerMeterSquared(Base_UnitType):
         "WH/M2": "{}*1000",
         "WH/FT2": "{}*92.903",
         "KWH/M2": "{}*1",
+        "KWH/IN2": "{}*(1/1550.0031)",
         "KWH/FT2": "{}*0.092903040",
-        "BTU/FT2": "{}*316.998",
+        "BTU/FT2": "{}*316.998330628",
         "KBTU/FT2": "{}*0.316998286",
     }
 

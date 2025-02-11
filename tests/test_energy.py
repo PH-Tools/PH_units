@@ -31,9 +31,20 @@ def test_kwh_meter_squared():
     assert convert(1, "KWH/M²", "WH/M2") == 1000
     assert convert(1, "KWH/M2", "WH/FT2") == 92.903
     assert convert(1, "KWH/M2", "KWH/M2") == 1
+    assert convert(1, "KWH/M2", "KWH/IN2") == 0.0006451600000025807
     assert convert(1, "KWH/M2", "KWH/FT2") == 0.092903040
-    assert convert(1, "KWH/M2", "BTU/FT2") == 316.998
+    assert convert(1, "KWH/M2", "BTU/FT2") == 316.998330628
     assert convert(1, "KWH/M2", "KBTU/FT2") == 0.316998286
+
+
+def test_kWh_per_in2():
+    assert convert(1, "KWH/IN2", "WH/M2") == 1_550_003.1000062001
+    assert convert(1, "KWH/IN2", "WH/FT2") == 144_000
+    assert convert(1, "KWH/IN2", "KWH/M2") == 1_550.0031000062001
+    assert convert(1, "KWH/IN2", "KWH/IN2") == 1
+    assert convert(1, "KWH/IN2", "KWH/FT2") == 144
+    assert convert(1, "KWH/IN2", "BTU/FT2") == 491_348.448
+    assert convert(1, "KWH/IN2", "KBTU/FT2") == 491.34844799999996
 
 
 def test_kBtu_foot_squared():
