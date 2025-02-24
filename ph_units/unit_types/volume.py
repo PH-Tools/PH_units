@@ -8,7 +8,7 @@ class MeterCubed(Base_UnitType):
     """Meter Cubed"""
 
     __symbol__ = "M3"
-    __aliases__ = ["M³", "M3", "METERCUBED", "CUBICMETER"]
+    __aliases__ = ["M³", "M3", "METERCUBED", "CUBICMETER", "METERS-3"]
     __factors__ = {
         "M3": "{}*1",
         "FT3": "{}*35.31466672",
@@ -50,7 +50,7 @@ class FootCubed(Base_UnitType):
     """Foot Cubed"""
 
     __symbol__ = "FT3"
-    __aliases__ = ["CF", "FT3", "FT³", "ft³", "CUBIC FOOT", "CUBIC FEET"]
+    __aliases__ = ["CF", "FT3", "FT³", "ft³", "CUBIC FOOT", "CUBIC FEET", "FEET-3"]
     __factors__ = {
         "M3": "{}*0.028316847",
         "FT3": "{}*1",
@@ -59,11 +59,19 @@ class FootCubed(Base_UnitType):
         "GA": "{}*7.48051948051948",
     }
 
+
 class InchCubed(Base_UnitType):
     """Inch Cubed"""
 
     __symbol__ = "IN3"
-    __aliases__ = ["INCHCUBED", "INCHCUBIC", "INCH^3", "INCH^3", "INCHES-CUBED", "INCHES-3"]
+    __aliases__ = [
+        "INCHCUBED",
+        "INCHCUBIC",
+        "INCH^3",
+        "INCH^3",
+        "INCHES-CUBED",
+        "INCHES-3",
+    ]
     __factors__ = {
         "M3": "{}*0.000016387064",
         "FT3": "{}*0.0005787037037037037",

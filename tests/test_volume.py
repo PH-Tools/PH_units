@@ -31,13 +31,13 @@ def test_gallon():
     assert convert(1, "GA", "GA") == 1
 
 
-
 def test_foot_cubed():
     assert convert(1, "FT3", "M3") == pytest.approx(0.028316847)
     assert convert(1, "FT3", "FT3") == 1
     assert convert(1, "FT3", "IN3") == pytest.approx(1728)
     assert convert(1, "FT3", "L") == pytest.approx(28.316846592)
     assert convert(1, "FT3", "GA") == pytest.approx(7.48051948051948)
+
 
 def test_inch_cubed():
     assert convert(1, "IN3", "M3") == pytest.approx(0.000016387064)

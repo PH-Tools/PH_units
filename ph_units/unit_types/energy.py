@@ -259,7 +259,7 @@ class KiloWattHoursPerInchSquared(Base_UnitType):
     """KWH/IN2"""
 
     __symbol__ = "KWH/IN2"
-    __aliases__ = ["KWH/IN²", 'KWH/SQ-Inch', "KWH/SQ-Inches"]
+    __aliases__ = ["KWH/IN²", "KWH/SQ-Inch", "KWH/SQ-Inches"]
     __factors__ = {
         "WH/M2": "({}*1000)/0.00064516",
         "WH/FT2": "{}*1000*144",
@@ -269,6 +269,7 @@ class KiloWattHoursPerInchSquared(Base_UnitType):
         "BTU/FT2": "{}*3412.142*144",
         "KBTU/FT2": "{}*3.412142*144",
     }
+
 
 class KilowattHoursPerMeterSquared(Base_UnitType):
     """KWH/M2"""

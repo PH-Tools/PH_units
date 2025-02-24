@@ -162,7 +162,7 @@ def _conversion_factor(_schema, _input_unit, _target_unit):
 def validate_unit_type(_unit_type):
     # type: (str | None) -> str | None
     """Return the valid unit type from the input string.
-    
+
     examples:
         "in." -> "IN"
         "m" -> "M"
@@ -173,9 +173,8 @@ def validate_unit_type(_unit_type):
 
     if _unit_type is None:
         return None
-    
-    return _standardize_unit_name(_unit_type, unit_type_alias_dict)
 
+    return _standardize_unit_name(_unit_type, unit_type_alias_dict)
 
 
 def convert(_value, _input_unit, _target_unit):
