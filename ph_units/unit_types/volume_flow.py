@@ -49,9 +49,10 @@ class MeterCubedPerHour(Base_UnitType):
 class MeterCubedPerHourPerMeterSquared(Base_UnitType):
     """M3/HR-M2"""
 
-    __symbol__ = "M3/HRM2"
+    __symbol__ = "M3/HR-M2"
     __aliases__ = [
         "M3/HR-M2",
+        "M3/H-M2",
         "M3/HRM2",
         "M3/HR-M^2",
         "M3/HRM^2",
@@ -60,7 +61,32 @@ class MeterCubedPerHourPerMeterSquared(Base_UnitType):
         "M3/M²H",
         "M³/M²H",
     ]
-    __factors__ = {"M3/HRM2": "{}*1", "CFM/FT2": "{}*0.054680665"}
+    __factors__ = {
+        "M3/S-M2": "{}/3600",
+        "M3/HR-M2": "{}*1",
+        "CFM/FT2": "{}*0.054680665",
+    }
+
+
+class MeterCubedPerSecondPerMeterSquared(Base_UnitType):
+    """M3/S-M2"""
+
+    __symbol__ = "M3/S-M2"
+    __aliases__ = [
+        "M3/S-M2",
+        "M3/SM2",
+        "M3/S-M^2",
+        "M3/SM^2",
+        "M³/M²S",
+        "M3/M2S",
+        "M3/M²S",
+        "M³/M²S",
+    ]
+    __factors__ = {
+        "M3/S-M2": "{}*1",
+        "M3/HR-M2": "{}*3600",
+        "CFM/FT2": "{}*196.8504",
+    }
 
 
 # -- IP
@@ -98,5 +124,15 @@ class FootCubedPerMinutePerFootSqaure(Base_UnitType):
     """CFM/FT2"""
 
     __symbol__ = "CFM/FT2"
-    __aliases__ = ["CFM/SF", "CFM/FT²", "CFM/SQFT", "CFM/SQFT"]
-    __factors__ = {"CFM/FT2": "{}*1", "M3/HRM2": "{}*18.288"}
+    __aliases__ = [
+        "CFM/SF",
+        "CFM/FT²",
+        "CFM/SQFT",
+        "CFM/SQFT",
+        "FT3/M-FT2",
+    ]
+    __factors__ = {
+        "M3/S-M2": "({}*18.288)/3600",
+        "M3/HR-M2": "{}*18.288",
+        "CFM/FT2": "{}*1",
+    }

@@ -32,8 +32,15 @@ def test_M3_per_hour():
 
 
 def test_M3_per_hour_per_square_meter():
-    assert convert(72, "M3/HRM2", "M3/HRM2") == 72
-    assert convert(72, "M3/HRM2", "CFM/FT2") == pytest.approx(3.937007874)
+    assert convert(72, "M3/HR-M2", "M3/HR-M2") == 72
+    assert convert(43_200, "M3/HR-M2", "M3/S-M2") == 12
+    assert convert(72, "M3/HR-M2", "CFM/FT2") == pytest.approx(3.937007874)
+
+
+def test_M3_per_second_per_square_meter():
+    assert convert(212.5, "M3/S-M2", "M3/HR-M2") == 765_000
+    assert convert(43200, "M3/S-M2", "M3/S-M2") == 43200
+    assert convert(72, "M3/S-M2", "CFM/FT2") == pytest.approx(14_173.228368)
 
 
 def test_FT3_per_minute():
@@ -54,4 +61,5 @@ def test_FT3_per_hour():
 
 def test_FT3_per_minute_per_FT2():
     assert convert(72, "CFM/FT2", "CFM/FT2") == 72
-    assert convert(72, "CFM/FT2", "M3/HRM2") == pytest.approx(1_316.736)
+    assert convert(500, "CFM/FT2", "M3/S-M2") == pytest.approx(2.54)
+    assert convert(72, "CFM/FT2", "M3/HR-M2") == pytest.approx(1_316.736)
