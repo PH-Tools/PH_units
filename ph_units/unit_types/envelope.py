@@ -34,7 +34,7 @@ class MeterSquaredKelvinPerWatt(Base_UnitType):
     """M2K/W (R-Value)"""
 
     __symbol__ = "M2K/W"
-    __aliases__ = ["R-SI", "M²K/W"]
+    __aliases__ = ["R-SI", "M²K/W", "M2-K/W", "M²-K/W"]
     __factors__ = {
         "M2K/W": "{}*1",
         "W/M2K": "(1/{})",

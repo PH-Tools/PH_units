@@ -90,3 +90,19 @@ def test_negative_feet_parsed_input():
     assert convert(*parse_input("-4 FT"), "M") == -1.2192
     assert convert(*parse_input("-4 FT"), "CM") == -121.92
     assert convert(*parse_input("-4 FT"), "MM") == -1219.2
+
+
+def test_mil():
+    assert convert(1, "MIL", "MIL") == 1.0
+    assert convert(1, "MIL", "M") == 0.0000254
+    assert convert(1, "MIL", "CM") == 0.00254
+    assert convert(1, "MIL", "MM") == 0.0254
+    assert convert(1, "MIL", "FT") == pytest.approx(0.0000833333)
+    assert convert(1, "MIL", "IN") == pytest.approx(0.001)
+
+    assert convert(convert(1, "MIL", "M"), "M", "MIL") == pytest.approx(1)
+    assert convert(convert(1, "MIL", "CM"), "CM", "MIL") == pytest.approx(1)
+    assert convert(convert(1, "MIL", "MM"), "MM", "MIL") == pytest.approx(1)
+    assert convert(convert(1, "MIL", "FT"), "FT", "MIL") == pytest.approx(1)
+    assert convert(convert(1, "MIL", "IN"), "IN", "MIL") == pytest.approx(1)
+    assert convert(convert(1, "MIL", "MIL"), "MIL", "MIL") == pytest.approx(1)
