@@ -8,7 +8,7 @@ class Meter(Base_UnitType):
     """Meter"""
 
     __symbol__ = "M"
-    __aliases__ = ["METER", "METERS"]
+    __aliases__ = ["METER", "METERS", "METRE", "METRES"]
     __factors__ = {
         "M": "{}*1",
         "CM": "{}*100",
@@ -23,7 +23,7 @@ class Centimeter(Base_UnitType):
     """Centimeter"""
 
     __symbol__ = "CM"
-    __aliases__ = ["CENTIMETER", "CENTIMETERS"]
+    __aliases__ = ["CENTIMETER", "CENTIMETERS", "CENTIMETRE", "CENTIMETRES"]
     __factors__ = {
         "M": "{}*0.01",
         "CM": "{}*1",
@@ -38,7 +38,7 @@ class Millimeter(Base_UnitType):
     """Millimeter"""
 
     __symbol__ = "MM"
-    __aliases__ = ["MILLIMETER", "MILLIMETERS"]
+    __aliases__ = ["MILLIMETER", "MILLIMETERS", "MILLIMETRE", "MILLIMETRES"]
     __factors__ = {
         "MM": "{}*1",
         "M": "{}*0.001",
