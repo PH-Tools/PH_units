@@ -14,6 +14,8 @@ def test_space():
 def test_meter_squared():
     assert convert(1, "M2", "M2") == 1
     assert convert(1, "M²", "M2") == 1
+    assert convert(1, "M2", "SQ-METRE") == 1
+    assert convert(1, "M2", "SQ-METRES") == 1
     assert convert(1, "M2", "CM2") == 10_000
     assert convert(1, "M2", "MM2") == 1_000_000
     assert convert(00.0553, "M2", "MM2") == 55_300
@@ -24,6 +26,8 @@ def test_meter_squared():
 def test_centimeter_squared():
     assert convert(1, "CM2", "CM2") == 1
     assert convert(1, "CM²", "CM2") == 1
+    assert convert(1, "CM2", "SQ-CENTIMETRE") == 1
+    assert convert(1, "CM2", "SQ-CENTIMETRES") == 1
     assert convert(1, "CM2", "M2") == 0.0001
     assert convert(1, "CM2", "MM2") == 100
     assert convert(1, "CM2", "FT2") == pytest.approx(0.001076391042)
@@ -33,6 +37,8 @@ def test_centimeter_squared():
 def test_millimeter_squared():
     assert convert(1, "MM2", "MM2") == 1
     assert convert(1, "MM²", "MM2") == 1
+    assert convert(1, "MM2", "SQ-MILLIMETRE") == 1
+    assert convert(1, "MM2", "SQ-MILLIMETRES") == 1
     assert convert(1, "MM2", "M2") == 0.000001
     assert convert(34_565_678, "MM2", "M2") == 34.565678
     assert convert(1, "MM2", "CM2") == 0.01

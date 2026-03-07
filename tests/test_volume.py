@@ -12,7 +12,10 @@ def test_meter_cubed():
     assert convert(1, "M3", "FT3") == pytest.approx(35.31466672148859)
     assert convert(1, "M3", "IN3") == pytest.approx(61023.74409473229)
     assert convert(1, "M3", "L") == 1000
-    assert convert(1, "M3", "GA") == pytest.approx(264.1720523581484)
+    assert convert(1, "M3", "GA") == pytest.approx(264.1720523581484)  
+    assert convert(1, "M3", "METRECUBED") == 1 
+    assert convert(1, "M3", "CUBICMETRE") == 1
+    assert convert(1, "M3", "METRES-3") == 1
 
 
 def test_liters():
@@ -21,7 +24,7 @@ def test_liters():
     assert convert(1, "L", "IN3") == pytest.approx(61.02374409473229)
     assert convert(1, "L", "L") == 1
     assert convert(1, "L", "GA") == pytest.approx(0.2641720523581484)
-
+    assert convert(1, "L", "LITRE") == 1
 
 def test_gallon():
     assert convert(1, "GA", "M3") == pytest.approx(0.003785411784)

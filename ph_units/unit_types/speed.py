@@ -8,7 +8,7 @@ class MeterPerDay(Base_UnitType):
     """Meter/Day"""
 
     __symbol__ = "M/DAY"
-    __aliases__ = ["M/D", "METER/DAY", "METER/D", "M/DAY"]
+    __aliases__ = ["M/D", "METER/DAY", "METER/D", "METRE/DAY", "METRE/D", "M/DAY"]
     __factors__ = {
         "M/DAY": "{}*1",
         "FT/DAY": "{}*3.280839895",
@@ -20,7 +20,7 @@ class MeterPerSecond(Base_UnitType):
     """Meter/Second"""
 
     __symbol__ = "M/S"
-    __aliases__ = ["METER/SEC", "METER/SECOND", "M/SECOND"]
+    __aliases__ = ["METER/SEC", "METER/SECOND", "M/SECOND", "METRE/SEC", "METRE/SECOND"]
     __factors__ = {
         "M/S": "{}*1",
         "M/DAY": "{}*24*60*60",

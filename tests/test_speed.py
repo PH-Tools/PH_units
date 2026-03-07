@@ -8,12 +8,16 @@ from ph_units.converter import convert
 
 def test_meters_per_day():
     assert convert(1, "M/DAY", "M/DAY") == 1
+    assert convert(1, "M/DAY", "METRE/DAY") == 1
+    assert convert(1, "M/DAY", "METRE/D") == 1
     assert convert(1, "M/DAY", "FT/DAY") == 3.280839895
     assert convert(10, "M/DAY", "M/S") == pytest.approx(0.000115740740740741)
 
 
 def test_meters_per_second():
     assert convert(1, "M/S", "M/S") == 1
+    assert convert(1, "M/S", "METRE/SEC") == 1
+    assert convert(1, "M/S", "METRE/SECOND") == 1
     assert convert(1, "M/S", "M/DAY") == 86400
     assert convert(1, "M/S", "FT/S") == pytest.approx(3.28084)
     assert convert(1, "M/S", "FT/DAY") == pytest.approx(283_464.566928000)
