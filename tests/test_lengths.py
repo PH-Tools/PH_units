@@ -14,7 +14,9 @@ def test_meter():
     assert convert(1, "M", "METRE") == 1
     assert convert(1, "M", "METRES") == 1
     assert convert(1, "METER", "M") == 1
+    assert convert(1, "METRE", "M") == 1
     assert convert(1, "METERS", "M") == 1
+    assert convert(1, "METRES", "M") == 1
     assert convert(1, "M", "CM") == 100
     assert convert(1, "M", "MM") == 1000
     assert convert(1, "M", "FT") == pytest.approx(3.280839895)
@@ -27,7 +29,9 @@ def test_centimeter():
     assert convert(1, "CENTIMETER", "M") == 0.01
     assert convert(1, "CENTIMETERS", "M") == 0.01
     assert convert(1, "CM", "CM") == 1
+    assert convert(1, "CM", "CENTIMETER") == 1
     assert convert(1, "CM", "CENTIMETRE") == 1
+    assert convert(1, "CM", "CENTIMETERS") == 1
     assert convert(1, "CM", "CENTIMETRES") == 1
     assert convert(1, "CM", "MM") == 10
     assert convert(1, "CM", "FT") == pytest.approx(0.0328)
@@ -40,7 +44,9 @@ def test_millimeter():
     assert convert(1, "MILLIMETERS", "M") == 0.001
     assert convert(1, "MM", "CM") == 0.1
     assert convert(1, "MM", "MM") == 1
+    assert convert(1, "MM", "MILLIMETER") == 1
     assert convert(1, "MM", "MILLIMETRE") == 1
+    assert convert(1, "MM", "MILLIMETERS") == 1
     assert convert(1, "MM", "MILLIMETRES") == 1
     assert convert(1, "MM", "FT") == pytest.approx(0.003280842)
     assert convert(1, "MM", "IN") == pytest.approx(0.039370100)
