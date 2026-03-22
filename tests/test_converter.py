@@ -33,6 +33,7 @@ def test_standardize_gives_error() -> None:
 def test_validate_unit_type() -> None:
     assert validate_unit_type("FT") == "FT"
     assert validate_unit_type("ft") == "FT"
+    assert validate_unit_type("FT ") == "FT"
     assert validate_unit_type("Btu/hr-ft2-F") == "BTU/HR-FT2-F"
     with pytest.raises(UnitTypeNameNotFound):
         validate_unit_type("Not/A-Unit")

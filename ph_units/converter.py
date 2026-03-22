@@ -56,7 +56,7 @@ def _standardize_unit_name(_input, _unit_type_alias_dict):
         * (str): The input and output unit-type strings
     """
 
-    _input_string = str(_input).upper()
+    _input_string = str(_input).upper().strip()
     try:
         input_unit = _unit_type_alias_dict[_input_string]
     except KeyError:
@@ -68,7 +68,7 @@ def _standardize_unit_name(_input, _unit_type_alias_dict):
             )
             raise UnitTypeNameNotFound(
                 "\nI do not understand the unit: '{}'? "
-                "\nPerhaps you meant on of these: '{}'?"
+                "\nPerhaps you meant one of these: '{}'?"
                 "\n\nValid formats include only: {}".format(
                     _input_string,
                     suggested_matches,
@@ -81,7 +81,7 @@ def _standardize_unit_name(_input, _unit_type_alias_dict):
 
 def _clean_user_inputs(_input_unit, _target_unit, _unit_type_alias_dict):
     # type: (Optional[str], str, Dict[str, str]) -> Tuple[str, str]
-    """Clean and standardize the suer-input strings for the unit-types. If no
+    """Clean and standardize the user-input strings for the unit-types. If no
     input unit-type is designated, the output unit-type will be assumed to
     match the target unit-type.
 
@@ -173,7 +173,7 @@ def validate_unit_type(_unit_type):
 
     if _unit_type is None:
         return None
-
+    
     return _standardize_unit_name(_unit_type, unit_type_alias_dict)
 
 
