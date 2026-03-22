@@ -14,6 +14,7 @@ from ph_units.converter import (
 def test_standardize_unit_name_simple() -> None:
     assert _standardize_unit_name("FT", unit_type_alias_dict) == "FT"
     assert _standardize_unit_name("FT", unit_type_alias_dict) == "FT"
+    assert _standardize_unit_name("FT ", unit_type_alias_dict) == "FT"
 
 
 def test_standardize_unit_name_percent() -> None:
@@ -33,7 +34,6 @@ def test_standardize_gives_error() -> None:
 def test_validate_unit_type() -> None:
     assert validate_unit_type("FT") == "FT"
     assert validate_unit_type("ft") == "FT"
-    assert validate_unit_type("FT ") == "FT"
     assert validate_unit_type("Btu/hr-ft2-F") == "BTU/HR-FT2-F"
     with pytest.raises(UnitTypeNameNotFound):
         validate_unit_type("Not/A-Unit")
