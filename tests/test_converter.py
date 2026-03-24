@@ -14,6 +14,7 @@ from ph_units.converter import (
 def test_standardize_unit_name_simple() -> None:
     assert _standardize_unit_name("FT", unit_type_alias_dict) == "FT"
     assert _standardize_unit_name("FT", unit_type_alias_dict) == "FT"
+    assert _standardize_unit_name("FT ", unit_type_alias_dict) == "FT"
 
 
 def test_standardize_unit_name_percent() -> None:
