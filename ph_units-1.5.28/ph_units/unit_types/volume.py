@@ -8,7 +8,16 @@ class MeterCubed(Base_UnitType):
     """Meter Cubed"""
 
     __symbol__ = "M3"
-    __aliases__ = ["M³", "M3", "METERCUBED", "CUBICMETER", "METERS-3", "METRECUBED", "CUBICMETRE", "METRES-3"]
+    __aliases__ = [
+        "M³",
+        "M3",
+        "METERCUBED",
+        "CUBICMETER",
+        "METERS-3",
+        "METRECUBED",
+        "CUBICMETRE",
+        "METRES-3",
+    ]
     __factors__ = {
         "M3": "{}*1",
         "FT3": "{}*35.31466672",

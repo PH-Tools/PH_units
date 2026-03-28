@@ -6,7 +6,7 @@ from ph_units.unit_types._base import Base_UnitType
 
 class ModifiedEnergyFactor(Base_UnitType):
     """MEF (Clothes Washers)
-    
+
     A metric used to measure the energy efficiency of residential clothes washers,
     accounting for energy consumption during washing, drying (by considering moisture
     retention in clothes).
@@ -28,7 +28,7 @@ class ModifiedEnergyFactor(Base_UnitType):
 
 class IntegratedModifiedEnergyFactor(Base_UnitType):
     """IMEF (Clothes Washers)
-    
+
     A metric used to measure the energy efficiency of residential clothes washers,
     accounting for energy consumption during washing, drying (by considering moisture
     retention in clothes), and standby/off-mode power usage.

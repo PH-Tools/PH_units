@@ -173,7 +173,7 @@ def validate_unit_type(_unit_type):
 
     if _unit_type is None:
         return None
-    
+
     return _standardize_unit_name(_unit_type, unit_type_alias_dict)
 
 
