@@ -10,11 +10,9 @@ version = "1.5.29"
 description = "Tools for working with common Passive House unit types"
 readme = "README.md"
 license = "GPL-3.0-or-later"
-requires-python = ">=2.7"
+requires-python = ">=3.10"
 authors = [{ name = "PH-Tools", email = "phtools@bldgtyp.com" }]
 classifiers = [
-    "Programming Language :: Python :: 2",
-    "Programming Language :: Python :: 2.7",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: Implementation :: CPython",
