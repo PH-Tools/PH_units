@@ -1,7 +1,0 @@
-black
-coverage
-pytest
-setuptools
-wheel
-twine!=5.1.0
-build
