@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 # -- Project Metadata -------------------------------------------------------------
 [project]
 name = "PH-units"
-version = "1.5.34"
+version = "1.5.35"
 description = "Tools for working with common Passive House unit types"
 readme = "README.md"
 license = "GPL-3.0-or-later"
@@ -30,7 +30,7 @@ exclude = ["tests*"]
 
 # -- Bump My Version ---------------------------------------------------------------
 [tool.bumpversion]
-current_version = "1.5.34"
+current_version = "1.5.35"
 commit = true
 tag = true
 tag_name = "v{new_version}"
