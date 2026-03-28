@@ -3,7 +3,7 @@
 
 import pytest
 
-from ph_units.converter import convert, unit_type_dict
+from ph_units.converter import convert
 
 
 def test_W():

@@ -2,9 +2,12 @@
 # -*- Python Version: 2.7 -*-
 import pytest
 
-from ph_units.converter import (UnitTypeNameNotFound, _standardize_unit_name,
-                                unit_type_alias_dict, unit_type_dict,
-                                validate_unit_type)
+from ph_units.converter import (
+    UnitTypeNameNotFound,
+    _standardize_unit_name,
+    unit_type_alias_dict,
+    validate_unit_type,
+)
 
 
 def test_standardize_unit_name_simple() -> None:

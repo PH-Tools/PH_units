@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 # -*- Python Version: 2.7 -*-
 
-import pytest
 
-from ph_units.converter import convert, unit_type_dict
+from ph_units.converter import convert
 
 
 def test_Celsius_to_Fahrenheit() -> None:

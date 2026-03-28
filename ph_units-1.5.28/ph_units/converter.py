@@ -11,7 +11,6 @@ except ImportError:
 from copy import copy
 
 from ph_units.unit_types import build_unit_type_dicts
-from ph_units.unit_types._base import Base_UnitType
 
 unit_type_dict, unit_type_alias_dict = build_unit_type_dicts()
 
