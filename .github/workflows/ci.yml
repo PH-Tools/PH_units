@@ -70,10 +70,12 @@ jobs:
             core.setOutput('level', 'patch');
 
       - name: Bump version
+        id: bump
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           bump-my-version bump ${{ steps.bump_level.outputs.level }}
+          echo "new_version=$(bump-my-version show current_version)" >> "$GITHUB_OUTPUT"
 
       - name: Push version commit and tag
         run: git push --follow-tags
@@ -83,3 +85,9 @@ jobs:
 
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.bump.outputs.new_version }}
+          generate_release_notes: true
