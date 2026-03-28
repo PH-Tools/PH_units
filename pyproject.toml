@@ -1,3 +1,49 @@
+# -- Build System -----------------------------------------------------------------
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+# -- Project Metadata -------------------------------------------------------------
+[project]
+name = "PH-units"
+version = "1.5.28"
+description = "Tools for working with common Passive House unit types"
+readme = "README.md"
+license = "GPL-3.0-or-later"
+requires-python = ">=2.7"
+authors = [{ name = "PH-Tools", email = "phtools@bldgtyp.com" }]
+classifiers = [
+    "Programming Language :: Python :: 2",
+    "Programming Language :: Python :: 2.7",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Operating System :: OS Independent",
+    "Typing :: Typed",
+]
+
+[project.optional-dependencies]
+dev = ["black", "coverage", "pytest", "pytest-cov"]
+
+# -- Package Discovery ------------------------------------------------------------
+[tool.setuptools.packages.find]
+include = ["ph_units*"]
+exclude = ["tests*"]
+
+# -- Bump My Version ---------------------------------------------------------------
+[tool.bumpversion]
+current_version = "1.5.28"
+commit = true
+tag = true
+tag_name = "v{new_version}"
+commit_message = "bump: version {current_version} -> {new_version} [skip ci]"
+
+[[tool.bumpversion.files]]
+filename = "pyproject.toml"
+search = 'version = "{current_version}"'
+replace = 'version = "{new_version}"'
+
+# -- Pytest ------------------------------------------------------------------------
 [tool.pytest.ini_options]
 filterwarnings = [
     "error",
@@ -5,18 +51,13 @@ filterwarnings = [
     'ignore:function ham\(\) is deprecated:DeprecationWarning',
 ]
 
-
+# -- Coverage ----------------------------------------------------------------------
 [tool.coverage.run]
-# --- For testing...
 command_line = "-m pytest . tests"
 source = ["ph_units"]
-# ---
 branch = true
 cover_pylib = false
-omit = [
-    "*.venv/*",
-    "*.venv_mbair/*"
-]
+omit = ["*.venv/*", "*.venv_mbair/*"]
 
 [tool.coverage.report]
 show_missing = true
