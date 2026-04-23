@@ -1,0 +1,15 @@
+nav:
+  - Getting Started:
+    - Overview: getting-started.md
+  - Packages:
+    - Overview: packages.md
+  - API Reference:
+    - CO2_measures: api/CO2_measures.md
+    - fuels: api/fuels.md
+    - grid_region: api/grid_region.md
+    - national_emissions: api/national_emissions.md
+    - HVAC:
+      - equipment: api/hvac/equipment.md
+    - Weather:
+      - adjustment_factors: api/weather/adjustment_factors.md
+      - resiliency_epw: api/weather/resiliency_epw.md
