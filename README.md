@@ -65,6 +65,10 @@ This `Unit` type supports basic mathematical operations like addition and subtra
 
 The `Unit` type also supports serialization and deserialization to and from JSON. Additionally, the `Unit` type can be used as a `dataclass` field type and should serialize properly when dataclass `as_dict` is called on the parent object.
 
+## Development:
+
+PH-units is a dependency-free leaf library that must run under both **IronPython 2.7** (it is loaded into Rhino via the Honeybee-PH plugins) and **CPython 3.10+**. Tests: `python -m pytest`. For contributor/agent orientation see [`CLAUDE.md`](CLAUDE.md) and the [`context/`](context/) folder.
+
 ---
 
 ![Tests](https://github.com/PH-Tools/PHX/actions/workflows/ci.yaml/badge.svg)
