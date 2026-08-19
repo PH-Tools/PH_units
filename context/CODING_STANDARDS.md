@@ -7,19 +7,16 @@ STATUS: CANONICAL ENGINEERING STANDARD
 
 ## 1. IronPython 2.7 compatibility (mandatory)
 
-This package is imported into Rhino/Grasshopper. It must run under IronPython 2.7 as well as CPython 3.10+.
+The generic dual-runtime rules (banned syntax and modules, comment-style type
+hints, guarded `typing` imports, defensive third-party imports, and the lint
+settings they imply) live in the **ironpython-27-compatibility** skill. Apply it
+before editing anything on the Rhino load path. Only this repo's specifics are
+recorded below.
 
-- No f-strings — use `.format()`.
-- No `pathlib` or modern-stdlib-only features.
-- Comment-style type hints (`# type: (float, str) -> float`), not inline annotations.
-- Guard `typing` imports:
-  ```python
-  try:
-      from typing import Any, Dict, Optional, Tuple
-  except ImportError:
-      pass  # IronPython 2.7
-  ```
-- **No third-party runtime dependencies.** Keep it a pure-Python leaf.
+This package is imported into Rhino/Grasshopper. The whole package is on the
+load path; there is no CPython-only zone.
+
+**No third-party runtime dependencies.** Keep it a pure-Python leaf.
 
 ## 2. Adding a unit type / dimension
 

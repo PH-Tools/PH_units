@@ -2,7 +2,7 @@
 
 Unit parsing and conversion for Passive House workflows — convert common PH unit types between IP and SI, parse `"{value} {unit}"` text, and carry unit info on a `float` subclass. Published on PyPI as `PH-units`. Source: https://github.com/PH-Tools/PH_units
 
-> **Runtime constraint:** must run under **IronPython 2.7** (it is imported into Rhino/Grasshopper by `honeybee_ph` and the GH plugins) as well as CPython 3.10+. See `context/CODING_STANDARDS.md`.
+> **Runtime constraint:** must run under **IronPython 2.7** (it is imported into Rhino/Grasshopper by `honeybee_ph` and the GH plugins) as well as CPython 3.10+. Apply the **ironpython-27-compatibility** skill; repo specifics in `context/CODING_STANDARDS.md`.
 
 ## What this repo is
 
