@@ -1,5 +1,6 @@
 from functools import reduce
 
+import dataclasses
 import pytest
 
 from ph_units.unit_type import Unit
@@ -224,3 +225,24 @@ def test_eq_unit_and_int():
     u1 = Unit(1.0, "M")
     u2 = 1
     assert u1 == u2
+
+
+def test_dataclass_fields_shim():
+    # -- Unit fakes being a dataclass so it can serialize from inside a real one.
+    # -- Regression test: the shimmed Field objects must be valid on every CPython
+    # -- version (private 'Field.__init__' arity broke on Python 3.14, issue #6).
+    fields = dataclasses.fields(Unit)
+    assert [f.name for f in fields] == ["value", "unit"]
+    for f in fields:
+        assert f._field_type is dataclasses._FIELD
+
+
+def test_unit_inside_a_dataclass_asdict():
+    # -- A Unit used as a field on a real dataclass should serialize itself
+    # -- into a {'value': ..., 'unit': ...} dict via dataclasses.asdict().
+    @dataclasses.dataclass
+    class Holder:
+        u: Unit
+
+    h = Holder(Unit(10.0, "m"))
+    assert dataclasses.asdict(h) == {"u": {"value": 10.0, "unit": "m"}}

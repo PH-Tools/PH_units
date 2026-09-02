@@ -10,7 +10,7 @@ except ImportError:
 
 try:
     # If we can, lets try and play well with dataclasses
-    from dataclasses import _FIELD, Field  # type: ignore
+    from dataclasses import _FIELD, field as _dataclass_field  # type: ignore
 except ImportError:
     # If we are in Python 2.7 (Fuck you Rhino 7) then fake it
     _FIELD = None
@@ -20,6 +20,10 @@ except ImportError:
 
         def __init__(self, *args, **kwargs):
             pass
+
+    def _dataclass_field(*args, **kwargs):
+        # type: (*Any, **Any) -> Field
+        return Field(*args, **kwargs)
 
 
 from ph_units.converter import convert
@@ -35,17 +39,11 @@ class Unit(object):
     # -- and serialize itself when called as part of 'asdict'
     __annotations__ = {"value": float, "unit": str}
 
-    try:
-        field_value = Field(*[None] * 7)  # Python 3.7
-    except:
-        field_value = Field(*[None] * 8)  # Python 3.11
+    field_value = _dataclass_field()
     field_value.name = "value"  # type: ignore
     field_value._field_type = _FIELD  # type: ignore
 
-    try:
-        field_unit = Field(*[None] * 7)  # Python 3.7
-    except:
-        field_unit = Field(*[None] * 8)  # Python 3.11
+    field_unit = _dataclass_field()
     field_unit.name = "unit"  # type: ignore
     field_unit._field_type = _FIELD  # type: ignore
 
