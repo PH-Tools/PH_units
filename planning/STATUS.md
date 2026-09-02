@@ -8,7 +8,7 @@ _Last updated: 2026-09-02_
 
 | Item | Kind | Status | Pointer |
 |------|------|--------|---------|
-| [#6 Unit dataclass shim breaks on Python 3.14](https://github.com/PH-Tools/PH_units/issues/6) | Bug | Implemented on branch | branch `fix/6-unit-field-shim-py314` (issue-only item, no planning folder) |
+| _(none active)_ | | | |
 
 ## Update rule
 
