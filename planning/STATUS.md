@@ -2,13 +2,13 @@
 
 Master index of tracked planning work in PH-units.
 
-_Last updated: 2026-07-15_
+_Last updated: 2026-09-02_
 
 ## Active / current work
 
 | Item | Kind | Status | Pointer |
 |------|------|--------|---------|
-| _(none active)_ | | | |
+| [#6 Unit dataclass shim breaks on Python 3.14](https://github.com/PH-Tools/PH_units/issues/6) | Bug | Implemented on branch | branch `fix/6-unit-field-shim-py314` (issue-only item, no planning folder) |
 
 ## Update rule
 
