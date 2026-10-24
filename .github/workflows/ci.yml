@@ -5,6 +5,8 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  # -- Manual release: re-runs a release a failed push left unpublished.
+  workflow_dispatch:
 
 jobs:
   test:
@@ -21,9 +23,13 @@ jobs:
   bump-and-release:
     name: Bump version and publish
     needs: test
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-latest
     environment: pypi
+    # -- One release at a time; a queued run bumps from the version the previous one pushed.
+    concurrency:
+      group: release
+      cancel-in-progress: false
     permissions:
       contents: write
       id-token: write
@@ -40,12 +46,54 @@ jobs:
       - name: Install build tools
         run: pip install bump-my-version build
 
+      # -- Bump from the current main, not the triggering commit: a push that landed
+      # -- while this run was testing would otherwise reject the version push.
+      - name: Sync to current main
+        id: sync
+        run: |
+          git fetch --tags origin main
+          git checkout -B main origin/main
+          latest_tag="$(git describe --tags --abbrev=0 --match 'v*' 2>/dev/null || true)"
+          if [ -n "$latest_tag" ] && git merge-base --is-ancestor "$GITHUB_SHA" "$latest_tag"; then
+            echo "already_released=true" >> "$GITHUB_OUTPUT"
+          fi
+
       # Determine bump level: check PR labels if this is a merged PR, else default to patch
       - name: Determine version bump
         id: bump_level
         uses: actions/github-script@v8
+        env:
+          ALREADY_RELEASED: ${{ steps.sync.outputs.already_released }}
         with:
           script: |
+            // An earlier run already released this commit (it bumped from a later main).
+            if (process.env.ALREADY_RELEASED === 'true') {
+              core.setOutput('level', 'none');
+              return;
+            }
+            if (context.eventName === 'workflow_dispatch') {
+              core.setOutput('level', 'patch');
+              return;
+            }
+            // No release when the push changed nothing shippable (planning
+            // docs, context, markdown, CI config). On any doubt (compare
+            // fails, file list truncated) fall through to releasing.
+            const NON_RELEASE = [/^planning\//, /^context\//, /^docs\//, /^\.github\//, /\.md$/i, /^\.gitignore$/];
+            try {
+              const { data: cmp } = await github.rest.repos.compareCommits({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                base: context.payload.before,
+                head: context.payload.after,
+              });
+              const files = (cmp.files || []).map(f => f.filename);
+              if (files.length > 0 && files.every(f => NON_RELEASE.some(rx => rx.test(f)))) {
+                core.setOutput('level', 'none');
+                return;
+              }
+            } catch (e) {
+              core.info(`compare failed (${e.message}); defaulting to release`);
+            }
             const commits = context.payload.commits || [];
             const mergeCommit = commits.find(c => c.message.startsWith('Merge pull request'));
             if (mergeCommit) {
@@ -70,6 +118,7 @@ jobs:
             core.setOutput('level', 'patch');
 
       - name: Bump version
+        if: steps.bump_level.outputs.level != 'none'
         id: bump
         run: |
           git config user.name "github-actions[bot]"
@@ -78,15 +127,19 @@ jobs:
           echo "new_version=$(bump-my-version show current_version)" >> "$GITHUB_OUTPUT"
 
       - name: Push version commit and tag
-        run: git push --follow-tags
+        if: steps.bump_level.outputs.level != 'none'
+        run: git push --atomic origin main "v${{ steps.bump.outputs.new_version }}"
 
       - name: Build package
+        if: steps.bump_level.outputs.level != 'none'
         run: python -m build
 
       - name: Publish to PyPI
+        if: steps.bump_level.outputs.level != 'none'
         uses: pypa/gh-action-pypi-publish@release/v1
 
       - name: Create GitHub Release
+        if: steps.bump_level.outputs.level != 'none'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ steps.bump.outputs.new_version }}
